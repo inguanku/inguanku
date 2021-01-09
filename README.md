@@ -2,7 +2,7 @@
 
 ## Start Konstribusi
 
-```git clone https://github.com/ccstmiktsm/practice-se.git
+git clone : https://github.com/inguanku/inguanku.git
 
 Buat branch masing masing
 
