@@ -4,11 +4,10 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
-    public function index()
+    public function register()
     {
-        return view('user/login');
+        return view('user/register');
     }
-
     //--------------------------------------------------------------------
 
 }
