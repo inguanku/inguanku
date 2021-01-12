@@ -6,16 +6,25 @@ body {
 .hero-image {
   position: relative;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../images/background.svg);
-  background-position: 0px -80px;
+    url(../images/background.png);
+  background-position: top;
   background-size: cover;
-  background-repeat: non-repeat;
+  background-repeat: no-repeat;
+  height: 45vh;
 }
 
 .link-dark {
   text-decoration: none;
 }
 
+.link-light {
+  text-decoration: none;
+}
+
 .link-dark:hover {
+  text-decoration: underline;
+}
+
+.link-light:hover {
   text-decoration: underline;
 }
