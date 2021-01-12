@@ -1,6 +1,21 @@
-nav{
-    top: -950px;
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif;
 }
-.btn {
-    border-radius: 30px;
+
+.hero-image {
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../images/background.svg);
+  background-position: 0px -80px;
+  background-size: cover;
+  background-repeat: non-repeat;
+}
+
+.link-dark {
+  text-decoration: none;
+}
+
+.link-dark:hover {
+  text-decoration: underline;
 }
