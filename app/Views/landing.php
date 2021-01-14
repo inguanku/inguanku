@@ -27,21 +27,24 @@
                                 <a class="nav-link text-light" href="#">Breeding</a>
                             </li>
                         </ul>
-                        <a href="#" class="link-light me-3">Sign in</a>
-                        <a href="#" class="btn btn-warning rounded-pill">Sign up</a>
+                        <a href="/login" class="link-light me-3">Login</a>
+                        <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="container">
-
+        <div class="container position-absolute top-50 start-50 translate-middle">
             <div class="p-5 rounded-lg text-light text-center">
                 <h1 class="display-4">Find your new friends</h1>
-                <p class="lead">Inguanku is a platform that connects donators and adopters of pets.</p>
-                <a class="btn btn-outline-warning btn-lg" href="#" role="button">Find here!</a>
+                <p class="lead">Inguanku is a platform that connects donators and adopters.</p>
+                <a class="btn btn-outline-warning btn-lg rounded-pill" href="#" role="button">Find here!</a>
             </div>
         </div>
     </div>
+
+    <footer class="text-center">
+        <p>Copyright © Inguanku</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
