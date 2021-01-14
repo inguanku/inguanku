@@ -38,13 +38,19 @@
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autofocus>
                             </div>
-                            <div class="mb-3">
-                                <label for="passwd" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwd">
-                            </div>
-                            <div class="mb-3">
-                                <label for="passwdConf" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="passwdConf">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="passwd" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="passwd">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="passwdConf" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="passwdConf">
+                                    </div>
+                                </div>
                             </div>
                             <div class="d-grid gap-2 col-3 mx-auto mt-4">
                                 <button type="submit" class="btn btn-warning rounded-pill button">Register</button>
