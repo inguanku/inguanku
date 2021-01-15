@@ -3,6 +3,14 @@ body {
     sans-serif;
 }
 
+.vh-96{
+  height:100%;
+}
+
+.vh-4{
+  height: 4vh;
+}
+
 .hero-image {
   position: relative;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -10,7 +18,7 @@ body {
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 45vh;
+  height:100vh;
 }
 
 .link-dark {
@@ -27,4 +35,34 @@ body {
 
 .link-light:hover {
   text-decoration: underline;
+}
+
+/* Login */
+.login-image{
+  background-image: url(../images/login.png);
+  height: 100vh;
+  background-size: cover;
+}
+
+.clogin{
+    height: 100vh;
+    margin-top: -10vh;
+    /* position: relative; */
+}
+
+.button:hover{
+background-color: goldenrod;
+}
+
+/* Register */
+.register-image{
+  background-image: url(../images/register.png);
+  height: 100vh;
+  background-size: cover;
+}
+
+/* footer */
+footer{
+  width: 100%;
+  background-color: #ffc107;
 }
