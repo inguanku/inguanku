@@ -21,10 +21,10 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="#">Adoption</a>
+                                <a class="nav-link text-light" href="/post/adopt">Adoption</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="#">Breeding</a>
+                                <a class="nav-link text-light" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
                         <a href="/login" class="link-light me-3">Login</a>
@@ -42,8 +42,8 @@
         </div>
     </div>
 
-    <footer class="text-center">
-        <p>Copyright © Inguanku</p>
+    <footer class="text-center vh-4">
+        <p>Copyright © 2020 Inguanku</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
