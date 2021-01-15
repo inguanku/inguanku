@@ -66,3 +66,14 @@ footer{
   width: 100%;
   background-color: #ffc107;
 }
+
+.kontener{
+  min-height: 96vh;
+}
+
+.post{
+  width: 100%;
+  height: 214px;
+  object-position: center;
+  object-fit: cover;
+}
