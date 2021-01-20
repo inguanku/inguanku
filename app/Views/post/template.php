@@ -33,7 +33,7 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid px-0">
             <?= $this->renderSection('content'); ?>
         </div>
     </div>
