@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid kontener bg-light px-0">
         <div class="container-fluid px-0">
             <nav class="navbar navbar-expand-lg shadow-sm">
                 <div class="container">
-                    <a class="navbar-brand" href="#"><img src="/images/logo1.svg" alt=""></a>
+                    <a class="navbar-brand" href="/"><img src="/images/logo1.svg" alt=""></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -33,7 +33,7 @@
                 </div>
             </nav>
         </div>
-        <div class="container-fluid bg-light">
+        <div class="container-fluid">
             <?= $this->renderSection('content'); ?>
         </div>
     </div>

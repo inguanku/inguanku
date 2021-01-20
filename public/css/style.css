@@ -3,11 +3,11 @@ body {
     sans-serif;
 }
 
-.vh-96{
-  height:100%;
+.vh-96 {
+  height: 100%;
 }
 
-.vh-4{
+.vh-4 {
   height: 4vh;
 }
 
@@ -18,7 +18,7 @@ body {
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  height:100vh;
+  height: 100vh;
 }
 
 .link-dark {
@@ -29,40 +29,78 @@ body {
   text-decoration: none;
 }
 
-.link-dark:hover {
-  text-decoration: underline;
-}
-
 .link-light:hover {
   text-decoration: underline;
 }
 
 /* Login */
-.login-image{
+.login-image {
   background-image: url(../images/login.png);
   height: 100vh;
   background-size: cover;
 }
 
-.clogin{
-    height: 100vh;
-    margin-top: -10vh;
-    /* position: relative; */
+.clogin {
+  height: 100vh;
+  margin-top: -10vh;
+  /* position: relative; */
 }
 
-.button:hover{
-background-color: goldenrod;
+.button:hover {
+  background-color: goldenrod;
 }
 
 /* Register */
-.register-image{
+.register-image {
   background-image: url(../images/register.png);
   height: 100vh;
   background-size: cover;
 }
 
 /* footer */
-footer{
+footer {
   width: 100%;
   background-color: #ffc107;
+}
+
+.kontener {
+  min-height: 96vh;
+}
+
+.thumb-post {
+  width: 100%;
+  height: 214px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 214px;
+  width: 100%;
+  opacity: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.overlay-text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.konten:hover .overlay {
+  bottom: 0;
+  top: 0;
+  opacity: 1;
 }

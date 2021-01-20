@@ -10,13 +10,13 @@
                 <div class="mb-3 text-center">
                     <label for="location" class="col-form-label">Location</label>
                     <select class="form-select shadow-sm" id="location">
-                        <option value="" selected disabled>Any</option>
+                        <option value="">All</option>
                     </select>
                 </div>
                 <div class="mb-3 text-center">
                     <label for="location" class="col-form-label">Category</label>
                     <select class="form-select shadow-sm" id="location">
-                        <option value="" selected disabled>Any</option>
+                        <option value="">All</option>
                         <option value="">Cat</option>
                         <option value="">Dog</option>
                     </select>
@@ -27,11 +27,22 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <?php for ($i = 0; $i < 10; $i++) : ?>
                     <div class="col">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
+                        <div class="card shadow-sm">
+                            <a href="#" class="link-dark">
+                                <div class="konten">
+                                    <img src="/images/login.png" class="card-img thumb-post" alt="...">
+                                    <div class="overlay">
+                                        <h4 class="overlay-text">
+                                            Detail
+                                        </h4>
+                                    </div>
+                                </div>
+                            </a>
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <a href="#" class="link-dark">
+                                    <h5 class="d-inline">Dwi</h5>
+                                </a>
+                                <p class="card-text">Rancah</p>
                             </div>
                         </div>
                     </div>
