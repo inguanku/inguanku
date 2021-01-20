@@ -37,9 +37,39 @@
             <?= $this->renderSection('content'); ?>
         </div>
     </div>
-    <footer class="text-center vh-4 bottom-0 bg-white">
-        <p>Copyright © 2020 Inguanku</p>
-    </footer>
+    <div id="footer" class="pt-lg-5 pt-0 mt-0 mt-lg-5 text-center text-lg-start bg-dark text-white">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-sm-3">
+                    <a href="#" class="accent-text-color text-decoration-none"><h2 class="text-white">Inguanku</h2></a>
+                    <p class="accent-text-color font-size-14 pt-3">
+                        Inguanku is a place to meet pet lovers where animal lovers can find the pet they want to keep.
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <h6 class="font-weight-semibold">Quick Link</h6>
+                    <ul class="accent-text-color font-size-14 pt-3 list-unstyled">
+                        <li><a href="#" class="accent-text-color text-decoration-none">Home</a></li>
+                        <li><a href="#" class="accent-text-color text-decoration-none">Adoption</a></li>
+                        <li><a href="#" class="accent-text-color text-decoration-none">Breeding</a></li>
+                        <li><a href="#" class="accent-text-color text-decoration-none">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="hr">
+            <div class="row gy-4 gy-lg-0 pb-5 pb-lg-4">
+                <div class="col-sm-4 font-size-14 accent-text-color text-center text-lg-start">&copy; 2021 Inguanku Team.</div>
+                <div class="col-sm-4 text-lg-end text-center">
+                    <ul class="list-unstyled font-size-14 list-inline mb-0">
+                        <li class="list-inline-item"><a class="accent-text-color text-decoration-none" href="#"><i data-feather="facebook" class="icon-24"></i></a></li>
+                        <li class="list-inline-item"><a class="accent-text-color text-decoration-none" href="#"><i data-feather="twitter" class="icon-24"></i></a></li>
+                        <li class="list-inline-item"><a class="accent-text-color text-decoration-none" href="#"><i data-feather="instagram" class="icon-24"></i></a></li>
+                        <li class="list-inline-item"><a class="accent-text-color text-decoration-none" href="#"><i data-feather="slack" class="icon-24"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="/js/bootstrap.bundle.min.js"></script>
