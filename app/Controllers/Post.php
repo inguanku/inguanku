@@ -18,4 +18,11 @@ class Post extends BaseController
         ];
         return view('post/breed', $data);
     }
+    public function detail()
+    {
+        $data = [
+            'title' => 'Detail | Inguanku'
+        ];
+        return view('post/detail', $data);
+    }
 }
