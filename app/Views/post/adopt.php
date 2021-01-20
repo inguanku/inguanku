@@ -31,11 +31,13 @@
                             <a href="#" class="link-dark">
                                 <div class="konten">
                                     <img src="/images/login.png" class="card-img thumb-post" alt="...">
-                                    <div class="overlay">
-                                        <h4 class="overlay-text">
-                                            Detail
-                                        </h4>
-                                    </div>
+                                    <a href="/post/detail">
+                                        <div class="overlay">
+                                            <h4 class="overlay-text">
+                                                Detail
+                                            </h4>
+                                        </div>
+                                    </a>
                                 </div>
                             </a>
                             <div class="card-body">
