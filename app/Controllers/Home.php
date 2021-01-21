@@ -6,7 +6,9 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('landing');
+		$session = session();
+		$data = $session->get('name');
+		return view('landing', ['data' => $data]);
 	}
 
 	//--------------------------------------------------------------------
