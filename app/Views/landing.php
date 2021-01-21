@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-sm-4">
                         <i data-feather="heart" class="icon-42 text-color d-block ms-auto me-auto"></i>
-                        <p class="text-center font-size-14 text-color font-weight-medium mt-2">Happy playing wit a pet</p>
+                        <p class="text-center font-size-14 text-color font-weight-medium mt-2">Happy playing with a pet</p>
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-sm-3">
-                    <a href="#"><img src="img/logo.png" alt="Landing Page" width="160"></a>
+                    <a href="#" class="accent-text-color text-decoration-none"><h2 class="text-white">Inguanku</h2></a>
                     <p class="accent-text-color font-size-14 pt-3">
                         Inguanku is a place to meet pet lovers where animal lovers can find the pet they want to keep.
                     </p>
