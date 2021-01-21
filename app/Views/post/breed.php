@@ -28,9 +28,22 @@
                 <?php for ($i = 0; $i < 10; $i++) : ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="/images/post/dog1.png" class="card-img post" alt="...">
+                            <a href="#" class="link-dark">
+                                <div class="konten">
+                                    <img src="/images/post/dog1.png" class="card-img thumb-post" alt="...">
+                                    <a href="/post/detail">
+                                        <div class="overlay">
+                                            <h4 class="overlay-text">
+                                                Detail
+                                            </h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            </a>
                             <div class="card-body">
-                                <h5 class="card-title">Dwi</h5>
+                                <a href="#" class="link-dark">
+                                    <h5 class="d-inline">Dwi</h5>
+                                </a>
                                 <p class="card-text">Rancah</p>
                             </div>
                         </div>
