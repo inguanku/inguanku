@@ -28,7 +28,7 @@ class DbInguanku extends Migration
 			],
 			'passwd' => [
 				'type' => 'VARCHAR',
-				'constraint' => '50',
+				'constraint' => '255',
 			],
 			'phone' => [
 				'type' => 'VARCHAR',
