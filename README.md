@@ -1,33 +1,39 @@
 # Inguanku Project
 
-## Start Konstribusi
+## Start Contribution
 
-1.Git clone
+1.Cloning repository
 
-git clone : https://github.com/inguanku/inguanku.git
+`git clone : https://github.com/inguanku/inguanku.git`
 
-2.Masuk direktori
+2.Switch to project directory
 
-``` cd inguanku ```
+`cd inguanku`
 
-3.Buat branch masing masing
+3.Create your own branch
 
-``` git checkout -b feature/namaBranch develop ```
+`git checkout -b feature/yourBranchName develop`
 
-4.Git push
+4.Push your local repository
 
-``` git push --set-upstream origin feature/namaBranch ```
+`git push --set-upstream origin feature/yourBranchName`
 
 ## Start Running Project
 
-sebelum running project pastikan sudah install composer.
+We'll assume you have composer installed
 
-1. Masuk Direktori project
+1. Switch to project directory
 
-2. Sebelum running project install composer dengan type
+2. Install project dependencies with composer
 
-``` composer install ```
+`composer install`
 
-3. Start running your project
+3. Create db_inguanku in your mysql server
 
-``` php spark serve ```
+4. Migrate the table
+
+`php spark migrate`
+
+5. Start running your project
+
+`php spark serve`
