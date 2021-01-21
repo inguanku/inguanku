@@ -30,9 +30,9 @@
                     <div class="col-6">
                         <h3 class="mb-4">Get started absolutely free</h3>
                         <form action="/user/save" method="post">
-                        <?php if(isset($validation)): ?>
-                        <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
-                        <?php endif; ?>
+                            <?php if (isset($validation)) : ?>
+                                <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+                            <?php endif; ?>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="name" name="name" autofocus>
@@ -46,8 +46,8 @@
                                 <input type="text" maxlength="15" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" autofocus>
                             </div>
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" aria-describedby="addressHelp" autofocus>
+                                <label for="phone" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" aria-describedby="addressHelp" autofocus>
                             </div>
                             <div class="row">
                                 <div class="col-6">

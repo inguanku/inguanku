@@ -4,6 +4,5 @@ use CodeIgniter\Model;
 
 class UserModel extends Model {
     protected $table = 'tbl_user';
-    protected $allowedFields = ['name', 'email', 'passwd', 'phone', 'address'];
+    protected $allowedFields = ['name', 'email', 'passwd', 'phone', 'address', 'city', 'avatar'];
 }
-?>
