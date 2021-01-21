@@ -27,8 +27,14 @@
                                 <a class="nav-link text-light" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
-                        <a href="/login" class="link-light me-3">Login</a>
-                        <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
+                        
+                        <?php if($data):?>
+                            <?php echo '<a href="#" class="link-light me-3">Hello, '.$data.'</a>'?>
+                            <a href="/user/logout" class="link-light me-3">Logout</a>
+                        <?php else:?>
+                            <a href="/login" class="link-light me-3">Login</a>
+                            <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
+                        <?php endif;?>
                     </div>
                 </div>
             </nav>
