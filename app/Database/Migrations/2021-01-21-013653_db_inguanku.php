@@ -134,10 +134,10 @@ class DbInguanku extends Migration
 		*/
 
 		/*
-		* START:Replay Table
+		* START:Reply Table
 		*/
 		$this->forge->addField([
-			'replay_id' => [
+			'reply_id' => [
 				'type' => 'INT',
 				'constraint' => 11,
 				'unsigned' => true,
@@ -156,10 +156,10 @@ class DbInguanku extends Migration
 				'constraint' => '255'
 			]
 		]);
-		$this->forge->addKey('replay_id', true);
-		$this->forge->createTable('tbl_replay');
+		$this->forge->addKey('reply_id', true);
+		$this->forge->createTable('tbl_reply');
 		/*
-		* END:Replay Table
+		* END:Reply Table
 		*/
 
 		/*
@@ -229,7 +229,7 @@ class DbInguanku extends Migration
 		$this->forge->dropTable('tbl_user');
 		$this->forge->dropTable('tbl_post');
 		$this->forge->dropTable('tbl_discuss');
-		$this->forge->dropTable('tbl_replay');
+		$this->forge->dropTable('tbl_reply');
 		$this->forge->dropTable('tbl_request');
 		$this->forge->dropTable('tbl_transaction');
 	}
