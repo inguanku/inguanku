@@ -40,6 +40,11 @@ class DbInguanku extends Migration
 				'constraint' => '255',
 				'null' => true
 			],
+			'city' => [
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+				'null' => true
+			],
 			'avatar' => [
 				'type' => 'VARCHAR',
 				'constraint' => '255'
@@ -96,7 +101,12 @@ class DbInguanku extends Migration
 			'breed' => [
 				'type' => 'VARCHAR',
 				'constraint' => '50'
+			],
+			'picture_id' => [
+				'type' => 'INT',
+				'constaint' => '11'
 			]
+
 		]);
 		$this->forge->addKey('post_id', true);
 		$this->forge->createTable('tbl_post');
@@ -104,6 +114,30 @@ class DbInguanku extends Migration
 		* END:Post Table
 		*/
 
+		/*
+		* START:Picture Table
+		*/
+		$this->forge->addField([
+			'picture_id' => [
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => true,
+				'auto_increment' => true,
+			],
+			'post_id' => [
+				'type' => 'INT',
+				'constraint' => '11',
+			],
+			'file_name' => [
+				'type' => 'VARCHAR',
+				'constraint' => '255',
+			]
+		]);
+		$this->forge->addKey('picture_id', true);
+		$this->forge->createTable('tbl_picture');
+		/*
+		* END:Picture Table
+		*/
 		/*
 		* START:Disscuss Table
 		*/
@@ -228,6 +262,7 @@ class DbInguanku extends Migration
 	{
 		$this->forge->dropTable('tbl_user');
 		$this->forge->dropTable('tbl_post');
+		$this->forge->dropTable('tbl_picture');
 		$this->forge->dropTable('tbl_discuss');
 		$this->forge->dropTable('tbl_reply');
 		$this->forge->dropTable('tbl_request');
