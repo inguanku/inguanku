@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container-fluid kontener bg-light px-0">
+    <div class="container-fluid kontener bg-light px-0 pb-2">
         <div class="container-fluid px-0">
             <nav class="navbar navbar-expand-lg shadow-sm">
                 <div class="container">
@@ -27,13 +27,13 @@
                                 <a class="nav-link text-dark" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
-                        <?php if($user):?>
-                            <?php echo '<a href="#" class="link-dark me-3">Hello, '.$user.'</a>'?>
+                        <?php if ($user) : ?>
+                            <?php echo '<a href="#" class="link-dark me-3">Hello, ' . $user . '</a>' ?>
                             <a href="/user/logout" class="link-dark me-3">Logout</a>
-                        <?php else:?>
+                        <?php else : ?>
                             <a href="/login" class="link-light me-3">Login</a>
                             <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </nav>
@@ -42,11 +42,13 @@
             <?= $this->renderSection('content'); ?>
         </div>
     </div>
-    <div id="footer" class="pt-lg-5 pt-0 mt-0 mt-lg-5 text-center text-lg-start bg-dark text-white">
+    <div id="footer" class="pt-lg-5 pt-0 mt-0 text-center text-lg-start bg-dark text-white">
         <div class="container">
             <div class="row gy-4">
                 <div class="col-sm-3">
-                    <a href="#" class="accent-text-color text-decoration-none"><h2 class="text-white">Inguanku</h2></a>
+                    <a href="#" class="accent-text-color text-decoration-none">
+                        <h2 class="text-white">Inguanku</h2>
+                    </a>
                     <p class="accent-text-color font-size-14 pt-3">
                         Inguanku is a place to meet pet lovers where animal lovers can find the pet they want to keep.
                     </p>

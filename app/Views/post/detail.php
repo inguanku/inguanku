@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="container card-detail shadow p-4 mt-4 mb-5 bg-white rounded">
+    <div class="container card-detail shadow p-4 mt-5 mb-5 bg-white rounded">
         <div class="row">
             <div class="col-8">
                 <div class="row">
@@ -60,6 +60,7 @@
                     <div class="card-body">
                         <h3 class="card-text">Owner</h3>
                         <div class="card-text">Tasikmalaya</div>
+                        <a href="#" class="mt-1 mx-auto d-block btn btn-warning">Request Me!</a>
                     </div>
                 </div>
             </div>
