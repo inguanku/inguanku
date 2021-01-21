@@ -24,8 +24,10 @@ class Post extends BaseController
     }
     public function detail()
     {
+        $session = session();
         $data = [
-            'title' => 'Detail | Inguanku'
+            'title' => 'Detail | Inguanku',
+            'user' => $session->get('name')
         ];
         return view('post/detail', $data);
     }
