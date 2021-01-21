@@ -47,7 +47,7 @@ class User extends BaseController
         $session = session();
         $model = new UserModel();
         $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+        $password = $this->request->getVar('passwd');
         $data = $model->where('email', $email)->first();
         if ($data) {
             $pass = $data['passwd'];

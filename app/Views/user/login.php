@@ -29,9 +29,9 @@
                 <div class="row justify-content-center d-flex align-items-center clogin">
                     <div class="col-6">
                         <h3 class="mb-4">Sign in to Inguanku</h3>
-                        <?php if(session()->getFlashdata('msg')): ?>
-                        <div class="alert alert-danger"> <?= session()->getFlashdata('msg') ?> </div>
-                        <?php endif;?>
+                        <?php if (session()->getFlashdata('msg')) : ?>
+                            <div class="alert alert-danger"> <?= session()->getFlashdata('msg') ?> </div>
+                        <?php endif; ?>
                         <form action="/user/auth" method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="passwd" name="passwd">
                             </div>
                             <div class="d-grid gap-2 col-3 mx-auto mt-4">
                                 <button type="submit" class="btn btn-warning rounded-pill button">Login</button>
