@@ -16,9 +16,9 @@
 
 4.Push your local repository
 
-`git push --set-upstream origin feature/yourBranchName`
+`git push -u origin feature/yourBranchName`
 
-## Start Running Project
+## Install project dependencies
 
 We'll assume you have composer installed
 
@@ -28,12 +28,16 @@ We'll assume you have composer installed
 
 `composer install`
 
-3. Create db_inguanku in your mysql server
+## Table Migration
 
-4. Migrate the table
+1. Create db_inguanku in your mysql server
+
+2. Migrate the table
 
 `php spark migrate`
 
-5. Start running your project
+## Start running project
+
+1. Start running your project
 
 `php spark serve`
