@@ -107,12 +107,12 @@ footer {
 
 /* Detail */
 .korsel-height {
-  height: 70vh;
+  height: 50vh;
   background-image: linear-gradient(to right, #f2994a, #f2c94c);
 }
 
 .fix-image {
-  height: 70vh;
+  height: 50vh;
 }
 
 .card-detail {
