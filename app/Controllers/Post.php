@@ -31,4 +31,14 @@ class Post extends BaseController
         ];
         return view('post/detail', $data);
     }
+
+    public function add()
+    {
+        $session = session();
+        $data = [
+            'title' => 'Add Adoption | Inguanku',
+            'user' => $session->get('name')
+        ];
+        return view('post/adopt/add', $data);
+    }
 }

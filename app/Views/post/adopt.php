@@ -25,6 +25,28 @@
         </div>
         <div class="col-md-7 col-lg-9">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card bg-warning shadow-sm">
+                        <a href="#" class="link-dark">
+                            <div class="konten">
+                                <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
+                                <a href="/post/adopt/add">
+                                    <div class="overlay">
+                                        <h4 class="overlay-text">
+                                            <i data-feather="plus-circle" class="add-icon"></i>
+                                        </h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
+                        <div class=" card-body">
+                            <a href="#" class="link-dark">
+                                <h5 class="d-inline">ADD</h5>
+                            </a>
+                            <p class="card-text">Post your pet here!</p>
+                        </div>
+                    </div>
+                </div>
                 <?php for ($i = 0; $i < 10; $i++) : ?>
                     <div class="col">
                         <div class="card shadow-sm">

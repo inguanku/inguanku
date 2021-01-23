@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/register', 'User::register');
 $routes->get('/login', 'Auth::login');
-
+$routes->get('/post/adopt/add', 'Post::add');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
