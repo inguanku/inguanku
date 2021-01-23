@@ -122,6 +122,20 @@ footer {
 
 /* End Detail */
 
+/* Profile */
+.avatar {
+  height: 304px;
+  width: 304px;
+  object-fit: cover;
+  border: solid #6c757d 5px;
+}
+/* End Profile */
+
+.add-icon {
+  width: 150px;
+  height: 150px;
+}
+
 /* [class*="col"] {
   outline: 1px solid red;
 } */

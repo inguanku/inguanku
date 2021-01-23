@@ -77,4 +77,13 @@ class User extends BaseController
         $session->destroy();
         return redirect()->to('/home');
     }
+    public function profile()
+    {
+        $session = session();
+        $data = [
+            'title' => 'Profile | Inguanku',
+            'user' => $session->get('name')
+        ];
+        return view('user/profile', $data);
+    }
 }
