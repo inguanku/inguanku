@@ -54,9 +54,13 @@ class User extends BaseController
             $verify_pass = password_verify($password, $pass);
             if ($verify_pass) {
                 $ses_data = [
+                    'id' => $data['user_id'],
                     'name'       => $data['name'],
                     'email'     => $data['email'],
                     'city'    => $data['city'],
+                    'phone' => $data['phone'],
+                    'address' => $data['address'],
+                    'avatar' => $data['avatar'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
@@ -88,7 +92,13 @@ class User extends BaseController
         $session = session();
         $data = [
             'title' => 'Profile | Inguanku',
-            'user' => $session->get('name')
+            'user' => $session->get('name'),
+            'email' => $session->get('email'),
+            'city' => $session->get('city'),
+            'phone' => $session->get('phone'),
+            'address' => $session->get('address'),
+            'avatar' => $session->get('avatar'),
+            'id' => $session->get('id')
         ];
         return view('user/profile', $data);
     }
