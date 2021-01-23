@@ -71,12 +71,18 @@ class User extends BaseController
         }
     }
 
+    public function login()
+    {
+        return view('user/login');
+    }
+
     public function logout()
     {
         $session = session();
         $session->destroy();
         return redirect()->to('/home');
     }
+
     public function profile()
     {
         $session = session();
