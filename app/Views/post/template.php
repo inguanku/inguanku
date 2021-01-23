@@ -28,10 +28,10 @@
                             </li>
                         </ul>
                         <?php if ($user) : ?>
-                            <?php echo '<a href="#" class="link-dark me-3">Hello, ' . $user . '</a>' ?>
-                            <a href="/user/logout" class="link-dark me-3">Logout</a>
+                            <?php echo '<a href="/user/profile" class="link-dark me-3">Hello, ' . $user . '</a>' ?>
+                            <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3">Logout</a>
                         <?php else : ?>
-                            <a href="/login" class="link-light me-3">Login</a>
+                            <a href="/login" class="link-dark me-3">Login</a>
                             <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
                         <?php endif; ?>
                     </div>
@@ -78,8 +78,9 @@
         </div>
     </div>
 
-
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/feather.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

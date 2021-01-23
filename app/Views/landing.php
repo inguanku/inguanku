@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inguanku</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -30,8 +30,8 @@
                             </ul>
 
                             <?php if ($data) : ?>
-                                <?php echo '<a href="#" class="link-light me-3">Hello, ' . $data . '</a>' ?>
-                                <a href="/user/logout" class="link-light me-3">Logout</a>
+                                <?php echo '<a href="/user/profile" class="link-light me-3">Hello, ' . $data . '</a>' ?>
+                                <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3">Logout</a>
                             <?php else : ?>
                                 <a href="/login" class="link-light me-3">Login</a>
                                 <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
@@ -215,7 +215,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="./js/feather.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
