@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container shadow my-5 bg-white p-5">
-    <form>
+    <form method="POST" enctype="multipart/form-data">
         <div class="row my-4 justify-content-center">
             <div class="col-4">
                 <?php if ($avatar) : ?>
@@ -38,7 +38,7 @@
                     <label for="address" class="form-label">Address</label>
                     <textarea rows="3" class="form-control" id="address" style="max-height: 150px;"><?= $address; ?></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-warning">Save</button>
             </div>
         </div>
     </form>
