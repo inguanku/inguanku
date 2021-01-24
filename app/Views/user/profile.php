@@ -12,7 +12,7 @@
                     <img class="avatar d-block mx-auto rounded-pill my-3" src="/images/avatar/default.jpg" alt="">
                 <?php endif; ?>
                 <div class="input-group">
-                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <input type="file" class="form-control" id="avatar-input" onchange="previewImg()">
                 </div>
             </div>
             <div class="col-6">
@@ -43,5 +43,19 @@
         </div>
     </form>
 </div>
+
+<script>
+    function previewImg() {
+        const avatar = document.querySelector('#avatar-input');
+        const avatarPreview = document.querySelector('.avatar');
+
+        const fileAvatar = new FileReader();
+        fileAvatar.readAsDataURL(avatar.files[0]);
+
+        fileAvatar.onload = function(event) {
+            avatarPreview.src = event.target.result;
+        }
+    }
+</script>
 
 <?= $this->endSection(); ?>
