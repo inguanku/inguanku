@@ -30,7 +30,7 @@
                         <a href="#" class="link-dark">
                             <div class="konten">
                                 <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
-                                <a href="/post/adopt/add">
+                                <a href="/post/add">
                                     <div class="overlay">
                                         <h4 class="overlay-text">
                                             <i data-feather="plus-circle" class="add-icon"></i>

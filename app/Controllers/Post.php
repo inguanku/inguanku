@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use \CodeIgniter\I18n\Time;
+
 class Post extends BaseController
 {
     public function adopt()
@@ -37,8 +39,15 @@ class Post extends BaseController
         $session = session();
         $data = [
             'title' => 'Add Adoption | Inguanku',
-            'user' => $session->get('name')
+            'user' => $session->get('name'),
+            'date' => Time::now()
         ];
         return view('post/adopt/add', $data);
+    }
+    public function process()
+    {
+        $pictures = $this->request->getFileMultiple('pictures');
+        $name = $this->request->getVar('petName');
+        dd($pictures);
     }
 }
