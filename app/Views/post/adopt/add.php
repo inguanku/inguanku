@@ -4,16 +4,17 @@
 
 <div class="container shadow my-5 bg-white p-5">
     <form action="/post/process" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="idHidden" value="<?= $id; ?>">
         <div class="row">
             <div class="col">
                 <h2>Post Adopt</h2>
                 <div class="mb-3">
                     <label for="pictures" class="form-label">Pictures</label>
-                    <input type="file" class="form-control" name="pictures" id="pictures" multiple>
+                    <input type="file" class="form-control" name="pictures[]" id="pictures" multiple>
                 </div>
                 <div class="mb-3">
                     <label for="petName" class="form-label">Pet Name</label>
-                    <input type="text" class="form-control" id="petName">
+                    <input type="text" class="form-control" id="petName" name="petName">
                 </div>
                 <div class="mb-3">
                     <label for="sex" class="form-label">Sex</label>
@@ -31,11 +32,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="breed" class="form-label">Breed</label>
-                    <input type="text" class="form-control" id="breed" value="">
+                    <input type="text" class="form-control" id="breed" name="breed" value="">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description"></textarea>
+                    <textarea class="form-control" id="description" name="description"></textarea>
                 </div>
                 <button type="submit" class="btn btn-warning">Save</button>
             </div>
