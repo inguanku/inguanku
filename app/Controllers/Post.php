@@ -12,9 +12,13 @@ class Post extends BaseController
     public function adopt()
     {
         $session = session();
+        $model = new PostModel();
+        $postData = $model->getPostData();
+        // dd($postData);
         $data = [
             'title' => 'Adoption | Inguanku',
-            'user' => $session->get('name')
+            'user' => $session->get('name'),
+            'post' => $postData
         ];
         return view('post/adopt', $data);
     }
@@ -82,11 +86,12 @@ class Post extends BaseController
             $postModel->insert_post($data);
 
             $postid = $postModel->getid();
+            $id = $postid[0]->post_id;
             $pictureModel = new PictureModel();
             foreach ($imagefile['pictures'] as $img) {
                 $newName = $img->getRandomName();
                 $data_picture = [
-                    'post_id' => intval($postid),
+                    'post_id' => (int)$id,
                     'file_name' => $newName
                 ];
 

@@ -47,12 +47,12 @@
                         </div>
                     </div>
                 </div>
-                <?php for ($i = 0; $i < 10; $i++) : ?>
+                <?php foreach ($post as $data) : ?>
                     <div class="col">
                         <div class="card shadow-sm">
                             <a href="#" class="link-dark">
                                 <div class="konten">
-                                    <img src="/images/login.png" class="card-img thumb-post" alt="...">
+                                    <img src="/images/post/<?= $data['file_name']; ?>" class="card-img thumb-post" alt="...">
                                     <a href="/post/detail">
                                         <div class="overlay">
                                             <h4 class="overlay-text">
@@ -64,13 +64,13 @@
                             </a>
                             <div class="card-body">
                                 <a href="#" class="link-dark">
-                                    <h5 class="d-inline">Dwi</h5>
+                                    <h5 class="d-inline"><?= $data['pet_name']; ?></h5>
                                 </a>
-                                <p class="card-text">Rancah</p>
+                                <p class="card-text"><?= $data['city']; ?></p>
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

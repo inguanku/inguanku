@@ -23,7 +23,7 @@ class PostModel extends Model
         return $query->getResult();
     }
 
-    public function getpostdata()
+    public function getPostData()
     {
         // $db      = \Config\Database::connect();
         // $builder = $db->table('tbl_post');
@@ -31,5 +31,9 @@ class PostModel extends Model
         // $builder->select('*');
         // $builder->join('comments', 'comments.id = blogs.id');
         // $query = $builder->get();
+        return $this->db->table('tbl_post')
+            ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
+            ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
+            ->get()->getResultArray();
     }
 }
