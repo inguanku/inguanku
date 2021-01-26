@@ -57,14 +57,14 @@ class Post extends BaseController
             'user' => $session->get('name')
         ];
 
-        $rules = [
-            'avatar'      => 'required|max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]',
-            'pet_name'    => 'required|min_length[1]|max_length[50]',
-            'sex'         => 'required',
-            'type'        => 'required',
-            'breed'       => 'required',
-            'description' => 'required'
-        ];
+        // $rules = [
+        //     'avatar'      => 'required|max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]',
+        //     'pet_name'    => 'required|min_length[1]|max_length[50]',
+        //     'sex'         => 'required',
+        //     'type'        => 'required',
+        //     'breed'       => 'required',
+        //     'description' => 'required'
+        // ];
 
         // if ($this->validate($rules)) {
         if ($imagefile = $this->request->getFiles()) {
@@ -81,11 +81,12 @@ class Post extends BaseController
             $postModel = new PostModel();
             $postModel->insert_post($data);
 
+            $postid = $postModel->getid();
             $pictureModel = new PictureModel();
             foreach ($imagefile['pictures'] as $img) {
                 $newName = $img->getRandomName();
                 $data_picture = [
-                    // 'post_id' => 
+                    'post_id' => intval($postid),
                     'file_name' => $newName
                 ];
 
@@ -94,12 +95,12 @@ class Post extends BaseController
                 // }
                 $pictureModel->insert_picture($data_picture);
             }
+            return redirect()->to('./post/adopt');
         }
-        // $imagefile = $this->request->getFiles()
-        // dd($newName);
-        // $model = new PostModel();
-        // $model->save($data);
-        // return redirect()->to('./post/add');
+        //     $imagefile = $this->request->getFiles();
+        //     $model = new PostModel();
+        //     $model->save($data);
+        //     return redirect()->to('./post/add');
         // } else {
         //     $data['validation'] = $this->validator;
         //     echo view('post/adopt/add', $data);

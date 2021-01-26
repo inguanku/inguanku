@@ -8,6 +8,9 @@
         <div class="row">
             <div class="col">
                 <h2>Post Adopt</h2>
+                <?php if (isset($validation)) : ?>
+                    <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+                <?php endif; ?>
                 <div class="mb-3">
                     <label for="pictures" class="form-label">Pictures</label>
                     <input type="file" class="form-control" name="pictures[]" id="pictures" multiple>
