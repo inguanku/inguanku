@@ -101,10 +101,6 @@ class DbInguanku extends Migration
 			'breed' => [
 				'type' => 'VARCHAR',
 				'constraint' => '50'
-			],
-			'picture_id' => [
-				'type' => 'INT',
-				'constaint' => '11'
 			]
 
 		]);

@@ -136,6 +136,6 @@ footer {
   height: 150px;
 }
 
-/* [class*="col"] {
+[class*="col"] {
   outline: 1px solid red;
-} */
+}
