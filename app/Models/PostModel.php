@@ -34,6 +34,7 @@ class PostModel extends Model
         return $this->db->table('tbl_post')
             ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
             ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
+            ->groupBy('tbl_post.post_id')
             ->get()->getResultArray();
     }
 }
