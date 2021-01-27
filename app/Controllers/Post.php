@@ -27,16 +27,23 @@ class Post extends BaseController
         $session = session();
         $data = [
             'title' => 'Breeding | Inguanku',
-            'user' => $session->get('name')
+            'user' => $session->get('name'),
         ];
         return view('post/breed', $data);
     }
     public function detail()
     {
         $session = session();
+        $model = new PostModel();
+        $postId = $this->request->uri->getSegment(3);
+        $dataDetail = $model->getDetail($postId);
+        // $data = $dataDetail[0]['pet_name'];
+        // dd($data);
         $data = [
             'title' => 'Detail | Inguanku',
             'user' => $session->get('name'),
+            'dataDetail' => $dataDetail
+
         ];
         return view('post/detail', $data);
     }
