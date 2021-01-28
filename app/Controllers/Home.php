@@ -2,13 +2,23 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Home extends BaseController
 {
 	public function index()
 	{
 		$session = session();
-		$data = $session->get('name');
-		return view('landing', ['data' => $data]);
+		$userId = $session->get('id');
+		$name = null;
+		if ($userId) {
+			$model = new UserModel();
+			$data =  $model->where('user_id', $userId)->first();
+			$name = $data['name'];
+			return view('landing', ['name' => $name]);
+		} else {
+			return view('landing', ['name' => $name]);
+		}
 	}
 
 	//--------------------------------------------------------------------

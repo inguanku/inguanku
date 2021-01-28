@@ -6,6 +6,54 @@ use App\Models\UserModel;
 
 class User extends BaseController
 {
+    protected $userModel;
+    protected $session;
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+        $this->session = session();
+    }
+
+    public function auth()
+    {
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('passwd');
+        $data = $this->userModel->where('email', $email)->first();
+        $id = $data['user_id'];
+        if ($data) {
+            $pass = $data['passwd'];
+            $verify_pass = password_verify($password, $pass);
+            if ($verify_pass) {
+                $ses_data = [
+                    'id' => $id,
+                    'name' => $data['name'],
+                    'logged_in'     => TRUE
+                ];
+                $this->session->set($ses_data);
+                return redirect()->to('/home');
+            } else {
+                $this->session->setFlashdata('msg', 'Wrong Password');
+                return redirect()->to('/login');
+            }
+        } else {
+            $this->session->setFlashdata('msg', 'Email not Found');
+            return redirect()->to('/login');
+        }
+    }
+
+    public function profile()
+    {
+        $id = $this->session->get('id');
+        $dataProfil = $this->userModel->getProfile($id);
+        $name = $dataProfil['name'];
+        $data = [
+            'title' => 'Profile | Inguanku',
+            'name' => $name,
+            'profile' => $dataProfil
+        ];
+        return view('user/profile', $data);
+    }
+
     public function register()
     {
         return view('user/register');
@@ -25,7 +73,6 @@ class User extends BaseController
         ];
 
         if ($this->validate($rules)) {
-            $model = new UserModel();
             $data = [
                 'name' => $this->request->getVar('name'),
                 'email' => $this->request->getVar('email'),
@@ -34,7 +81,7 @@ class User extends BaseController
                 'city' => $this->request->getVar('city')
             ];
 
-            $model->save($data);
+            $this->userModel->save($data);
             return redirect()->to('./login');
         } else {
             $data['validation'] = $this->validator;
@@ -42,38 +89,6 @@ class User extends BaseController
         }
     }
 
-    public function auth()
-    {
-        $session = session();
-        $model = new UserModel();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('passwd');
-        $data = $model->where('email', $email)->first();
-        if ($data) {
-            $pass = $data['passwd'];
-            $verify_pass = password_verify($password, $pass);
-            if ($verify_pass) {
-                $ses_data = [
-                    'id' => $data['user_id'],
-                    'name'       => $data['name'],
-                    'email'     => $data['email'],
-                    'city'    => $data['city'],
-                    'phone' => $data['phone'],
-                    'address' => $data['address'],
-                    'avatar' => $data['avatar'],
-                    'logged_in'     => TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to('/home');
-            } else {
-                $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/login');
-            }
-        } else {
-            $session->setFlashdata('msg', 'Email not Found');
-            return redirect()->to('/login');
-        }
-    }
 
     public function login()
     {
@@ -82,31 +97,23 @@ class User extends BaseController
 
     public function logout()
     {
-        $session = session();
-        $session->destroy();
+        $this->session->destroy();
         return redirect()->to('/home');
     }
 
-    public function profile()
-    {
-        $session = session();
-        $data = [
-            'title' => 'Profile | Inguanku',
-            'user' => $session->get('name'),
-            'email' => $session->get('email'),
-            'city' => $session->get('city'),
-            'phone' => $session->get('phone'),
-            'address' => $session->get('address'),
-            'avatar' => $session->get('avatar'),
-            'id' => $session->get('id')
-        ];
-        return view('user/profile', $data);
-    }
 
     public function edit()
     {
         $fileAvatar = $this->request->getFile('avatar');
-        $avatar = $fileAvatar->getRandomName();
+        if ($fileAvatar->getError() == 4) {
+            $avatar = $this->request->getVar('oldpic');
+        } else {
+            $avatar = $fileAvatar->getRandomName();
+            $fileAvatar->move('images/avatar', $avatar);
+            if ($this->request->getVar('oldpic') != null) {
+                unlink('images/avatar/' . $this->request->getVar('oldpic'));
+            }
+        }
         $data = [
             'name' => $this->request->getVar('name'),
             'email' => $this->request->getVar('email'),
@@ -116,8 +123,7 @@ class User extends BaseController
             'avatar' => $avatar,
         ];
         $userId = $this->request->getVar('idHidden');
-        $userModel = new UserModel();
-        $userModel->update($userId, $data);
-        $fileAvatar->move('images/avatar', $avatar);
+        $this->userModel->update($userId, $data);
+        return redirect()->to('/user/profile');
     }
 }
