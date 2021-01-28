@@ -37,14 +37,13 @@ class Post extends BaseController
         $model = new PostModel();
         $postId = $this->request->uri->getSegment(3);
         $dataDetail = $model->getDetail($postId);
-        // $data = $dataDetail[0]['pet_name'];
-        // dd($data);
+        // d($data = $dataDetail[0]['user_id']);
+        // dd($session->get('id'));
         $data = [
             'title' => 'Detail | Inguanku',
             'user' => $session->get('name'),
-            'user_id' => $session->get('user_id'),
+            'user_id' => $session->get('id'),
             'dataDetail' => $dataDetail
-
         ];
         return view('post/detail', $data);
     }
