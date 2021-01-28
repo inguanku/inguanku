@@ -102,4 +102,21 @@ class User extends BaseController
         ];
         return view('user/profile', $data);
     }
+
+    public function edit()
+    {
+        $data = [
+            'name' => $this->request->getVar('name'),
+            'email' => $this->request->getVar('email'),
+            'phone' => $this->request->getVar('phone'),
+            'city' => $this->request->getVar('city'),
+            'address' => $this->request->getVar('address'),
+            // 'avatar' => $this->request->getVar('avatar'),
+        ];
+        // dd($data);
+        $userId = $this->request->getVar('idHidden');
+        // dd($userId);
+        $userModel = new UserModel();
+        $userModel->update($userId, $data);
+    }
 }
