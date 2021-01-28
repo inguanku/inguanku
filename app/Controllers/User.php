@@ -105,18 +105,19 @@ class User extends BaseController
 
     public function edit()
     {
+        $fileAvatar = $this->request->getFile('avatar');
+        $avatar = $fileAvatar->getRandomName();
         $data = [
             'name' => $this->request->getVar('name'),
             'email' => $this->request->getVar('email'),
             'phone' => $this->request->getVar('phone'),
             'city' => $this->request->getVar('city'),
             'address' => $this->request->getVar('address'),
-            // 'avatar' => $this->request->getVar('avatar'),
+            'avatar' => $avatar,
         ];
-        // dd($data);
         $userId = $this->request->getVar('idHidden');
-        // dd($userId);
         $userModel = new UserModel();
         $userModel->update($userId, $data);
+        $fileAvatar->move('images/avatar', $avatar);
     }
 }
