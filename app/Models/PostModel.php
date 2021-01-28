@@ -9,6 +9,7 @@ class PostModel extends Model
 {
 
     protected $table = 'tbl_post';
+    protected $primaryKey = 'post_id';
     protected $allowedFields = ['user_id', 'pet_name', 'date', 'description', 'sex', 'category', 'status', 'type', 'breed', 'picture_id'];
 
     public function insert_post($data)
@@ -25,12 +26,6 @@ class PostModel extends Model
 
     public function getPostData()
     {
-        // $db      = \Config\Database::connect();
-        // $builder = $db->table('tbl_post');
-        // $builder->db->table('blog');
-        // $builder->select('*');
-        // $builder->join('comments', 'comments.id = blogs.id');
-        // $query = $builder->get();
         return $this->db->table('tbl_post')
             ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
             ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')

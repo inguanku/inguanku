@@ -29,8 +29,8 @@
                                 </li>
                             </ul>
 
-                            <?php if ($data) : ?>
-                                <?php echo '<a href="/user/profile" class="link-light me-3">Hello, ' . $data . '</a>' ?>
+                            <?php if ($name != null) : ?>
+                                <?php echo '<a href="/user/profile" class="link-light me-3">Hello, ' . $name . '</a>' ?>
                                 <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3">Logout</a>
                             <?php else : ?>
                                 <a href="/login" class="link-light me-3">Login</a>

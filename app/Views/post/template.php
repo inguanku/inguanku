@@ -28,8 +28,8 @@
                                 <a class="nav-link text-dark" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
-                        <?php if ($user['name']) : ?>
-                            <?php echo '<a href="/user/profile" class="link-dark me-3">Hello, ' . $user['name'] . '</a>' ?>
+                        <?php if ($name) : ?>
+                            <?php echo '<a href="/user/profile" class="link-dark me-3">Hello, ' . $name . '</a>' ?>
                             <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3">Logout</a>
                         <?php else : ?>
                             <a href="/login" class="link-dark me-3">Login</a>

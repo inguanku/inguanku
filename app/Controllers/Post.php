@@ -9,75 +9,64 @@ use CodeIgniter\Model;
 
 class Post extends BaseController
 {
+    protected $postModel;
+    protected $pictureModel;
+    protected $session;
+    public function __construct()
+    {
+        $this->postModel = new PostModel();
+        $this->pictureModel = new PictureModel();
+        $this->session = session();
+    }
     public function adopt()
     {
-        $session = session();
-        $model = new PostModel();
-        $postData = $model->getPostData();
-        // dd($postData);
+        $postData = $this->postModel->getPostData();
         $data = [
             'title' => 'Adoption | Inguanku',
-            'user' => $session->get('name'),
+            'name' => $this->session->get('name'),
             'post' => $postData
         ];
         return view('post/adopt', $data);
     }
     public function breed()
     {
-        $session = session();
         $data = [
             'title' => 'Breeding | Inguanku',
-            'user' => $session->get('name'),
+            'name' => $this->session->get('name'),
         ];
         return view('post/breed', $data);
     }
     public function detail()
     {
-        $session = session();
-        $model = new PostModel();
         $postId = $this->request->uri->getSegment(3);
-        $dataDetail = $model->getDetail($postId);
-        // d($data = $dataDetail[0]['user_id']);
-        // dd($session->get('id'));
+        $dataDetail = $this->postModel->getDetail($postId);
         $data = [
             'title' => 'Detail | Inguanku',
-            'user' => $session->get('name'),
-            'user_id' => $session->get('id'),
-            'dataDetail' => $dataDetail
+            'name' => $this->session->get('name'),
+            'user_id' => $this->session->get('id'),
+            'dataDetail' => $dataDetail,
+            'segment' => $postId
         ];
         return view('post/detail', $data);
     }
 
     public function add()
     {
-        $session = session();
         $data = [
             'title' => 'Add Adoption | Inguanku',
-            'user' => $session->get('name'),
+            'name' => $this->session->get('name'),
             'date' => Time::now(),
-            'id' => $session->get('id')
+            'id' => $this->session->get('id')
         ];
         return view('post/adopt/add', $data);
     }
 
     public function process()
     {
-        $session = session();
         $data = [
             'title' => 'Add Adoption | Inguanku',
-            'user' => $session->get('name')
+            'name' => $this->session->get('name')
         ];
-
-        // $rules = [
-        //     'avatar'      => 'required|max_size[avatar,1024]|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]',
-        //     'pet_name'    => 'required|min_length[1]|max_length[50]',
-        //     'sex'         => 'required',
-        //     'type'        => 'required',
-        //     'breed'       => 'required',
-        //     'description' => 'required'
-        // ];
-
-        // if ($this->validate($rules)) {
         if ($imagefile = $this->request->getFiles()) {
             $data = [
                 'user_id' => $this->request->getVar('idHidden'),
@@ -89,33 +78,32 @@ class Post extends BaseController
                 'type' => $this->request->getVar('type'),
                 'breed' => $this->request->getVar('breed'),
             ];
-            $postModel = new PostModel();
-            $postModel->insert_post($data);
 
-            $postid = $postModel->getid();
+            $this->postModel->insert_post($data);
+
+            $postid = $this->postModel->getid();
             $id = $postid[0]->post_id;
-            $pictureModel = new PictureModel();
             foreach ($imagefile['pictures'] as $img) {
                 $newName = $img->getRandomName();
                 $data_picture = [
                     'post_id' => (int)$id,
                     'file_name' => $newName
                 ];
-
-                // if ($img->isValid() && !$img->hasMoved()) {
                 $img->move('images/post', $newName);
-                // }
-                $pictureModel->insert_picture($data_picture);
+                $this->pictureModel->insert_picture($data_picture);
             }
             return redirect()->to('./post/adopt');
         }
-        //     $imagefile = $this->request->getFiles();
-        //     $model = new PostModel();
-        //     $model->save($data);
-        //     return redirect()->to('./post/add');
-        // } else {
-        //     $data['validation'] = $this->validator;
-        //     echo view('post/adopt/add', $data);
-        // }
+    }
+
+    public function deletePost($id = null)
+    {
+        $idPic = $this->pictureModel->findAll($id);
+        foreach ($idPic as $pic) {
+            unlink('images/post/' . $pic['file_name']);
+        }
+        $data['user'] = $this->postModel->where('post_id', $id)->delete();
+        $data['pictures'] = $this->pictureModel->where('post_id', $id)->delete();
+        return redirect()->to('./post/adopt');
     }
 }
