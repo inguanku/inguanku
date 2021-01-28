@@ -42,6 +42,7 @@ class Post extends BaseController
         $data = [
             'title' => 'Detail | Inguanku',
             'user' => $session->get('name'),
+            'user_id' => $session->get('user_id'),
             'dataDetail' => $dataDetail
 
         ];
