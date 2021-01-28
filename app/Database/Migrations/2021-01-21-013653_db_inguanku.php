@@ -134,63 +134,6 @@ class DbInguanku extends Migration
 		/*
 		* END:Picture Table
 		*/
-		/*
-		* START:Disscuss Table
-		*/
-		$this->forge->addField([
-			'discuss_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => true,
-				'auto_increment' => true,
-			],
-			'post_id' => [
-				'type' => 'INT',
-				'constraint' => '11',
-			],
-			'user_id' => [
-				'type' => 'int',
-				'constraint' => '11',
-			],
-			'content' => [
-				'type' => 'VARCHAR',
-				'constraint' => '255',
-			]
-		]);
-		$this->forge->addKey('discuss_id', true);
-		$this->forge->createTable('tbl_discuss');
-		/*
-		* END:Disscuss Table
-		*/
-
-		/*
-		* START:Reply Table
-		*/
-		$this->forge->addField([
-			'reply_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => true,
-				'auto_increment' => true
-			],
-			'discuss_id' => [
-				'type' => 'INT',
-				'constraint' => '11'
-			],
-			'user_id' => [
-				'type' => 'int',
-				'constraint' => '11'
-			],
-			'content' => [
-				'type' => 'VARCHAR',
-				'constraint' => '255'
-			]
-		]);
-		$this->forge->addKey('reply_id', true);
-		$this->forge->createTable('tbl_reply');
-		/*
-		* END:Reply Table
-		*/
 
 		/*
 		* START:Request Table
@@ -259,8 +202,6 @@ class DbInguanku extends Migration
 		$this->forge->dropTable('tbl_user');
 		$this->forge->dropTable('tbl_post');
 		$this->forge->dropTable('tbl_picture');
-		$this->forge->dropTable('tbl_discuss');
-		$this->forge->dropTable('tbl_reply');
 		$this->forge->dropTable('tbl_request');
 		$this->forge->dropTable('tbl_transaction');
 	}
