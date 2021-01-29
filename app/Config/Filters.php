@@ -37,6 +37,6 @@ class Filters extends BaseConfig
 	// that they should run on, like:
 	//    'isLoggedIn' => ['before' => ['account/*', 'profiles/*']],
 	public $filters = [
-		'auth' => ['before' => ['/post/add']]
+		'auth' => ['before' => ['/breed/add', 'post/add']]
 	];
 }
