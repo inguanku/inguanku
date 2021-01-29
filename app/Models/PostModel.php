@@ -30,7 +30,7 @@ class PostModel extends Model
             ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
             ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
             ->groupBy('tbl_post.post_id')
-            ->where('tbl_post.status', 'available')
+            ->where(['tbl_post.status' => 'available', 'tbl_post.category' => 'adopt'])
             ->get()->getResultArray();
     }
 

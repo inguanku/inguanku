@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container shadow my-5 bg-white p-5">
-    <form action="/post/process" method="POST" enctype="multipart/form-data">
+    <form action="/adopt/process" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="idHidden" value="<?= $id; ?>">
         <div class="row">
             <div class="col">
