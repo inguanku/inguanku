@@ -23,10 +23,12 @@ class Breed extends BaseController
         $data = [
             'title' => 'Add Breeding | Inguanku',
             'name' => $this->session->get('name'),
+            'heading' => 'Breeding',
+            'category' => 'breed',
             'date' => Time::now(),
             'id' => $this->session->get('id')
         ];
-        return view('post/breed/add', $data);
+        return view('post/add', $data);
     }
 
     public function process()

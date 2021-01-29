@@ -3,11 +3,11 @@
 <?= $this->section('content'); ?>
 
 <div class="container shadow my-5 bg-white p-5">
-    <form action="/adopt/process" method="POST" enctype="multipart/form-data">
+    <form action="/<?= $category; ?>/process" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="idHidden" value="<?= $id; ?>">
         <div class="row">
             <div class="col">
-                <h2>Post Adopt</h2>
+                <h2>Post <?= $heading; ?></h2>
                 <?php if (isset($validation)) : ?>
                     <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
                 <?php endif; ?>

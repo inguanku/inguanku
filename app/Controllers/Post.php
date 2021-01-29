@@ -23,10 +23,12 @@ class Post extends BaseController
         $postData = $this->postModel->getPostData('adopt');
         $data = [
             'title' => 'Adoption | Inguanku',
+            'heading' => 'Adoption',
+            'category' => 'adopt',
             'name' => $this->session->get('name'),
             'post' => $postData
         ];
-        return view('post/adopt', $data);
+        return view('post/index', $data);
     }
 
     public function breed()
@@ -34,10 +36,12 @@ class Post extends BaseController
         $postData = $this->postModel->getPostData('breed');
         $data = [
             'title' => 'Breeding | Inguanku',
+            'heading' => 'Breeding',
+            'category' => 'breed',
             'name' => $this->session->get('name'),
             'post' => $postData
         ];
-        return view('post/breed', $data);
+        return view('post/index', $data);
     }
 
     public function detail()
