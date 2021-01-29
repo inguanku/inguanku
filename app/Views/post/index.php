@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container py-3">
-    <h2 class="mb-4">Adoption</h2>
+    <h2 class="mb-4"><?= $heading; ?></h2>
     <div class="row g-3">
         <div class="col-md-5 col-lg-3 order-md-last">
             <form action="">
@@ -30,7 +30,7 @@
                         <a href="#" class="link-dark">
                             <div class="konten">
                                 <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
-                                <a href="/adopt/add">
+                                <a href="/<?= $category; ?>/add">
                                     <div class="overlay">
                                         <h4 class="overlay-text">
                                             <i data-feather="plus-circle" class="add-icon"></i>
