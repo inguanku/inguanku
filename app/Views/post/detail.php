@@ -54,7 +54,7 @@
                 <div class="card-body">
                     <h3 class="card-text"><?= $dataDetail[0]['name']; ?></h3>
                     <p class="card-text"><?= $dataDetail[0]['phone']; ?></p>
-                    <?= ($dataDetail[0]['user_id'] == $user_id) ? "<a href='/adopt/delete/$segment' class='mt-1 mx-auto d-block btn btn-danger'>Delete Post</a>" : "<a href='#' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>"; ?>
+                    <?= ($dataDetail[0]['user_id'] == $user_id) ? "<a href='/post/delete/$segment' class='mt-1 mx-auto d-block btn btn-danger'>Delete Post</a>" : "<a href='#' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>"; ?>
                 </div>
             </div>
         </div>

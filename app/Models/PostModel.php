@@ -24,13 +24,13 @@ class PostModel extends Model
         return $query->getResult();
     }
 
-    public function getPostData()
+    public function getPostData($category)
     {
         return $this->db->table('tbl_post')
             ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
             ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
             ->groupBy('tbl_post.post_id')
-            ->where(['tbl_post.status' => 'available', 'tbl_post.category' => 'adopt'])
+            ->where(['tbl_post.status' => 'available', 'tbl_post.category' => $category])
             ->get()->getResultArray();
     }
 
