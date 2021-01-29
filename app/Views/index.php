@@ -122,8 +122,8 @@
                     </h2>
                 </div>
                 <div class="row gy-lg-0 gy-5 wow wow animate__fadeInUp">
-                    <div class="col-12 col-sm-6 col-lg-3">
                     <?php foreach($post as $p):?>
+                    <div class="col-12 col-sm-6 col-lg-3">
                         <div class="card border-0 shadow-sm">
                             <img src="./images/post/<?= $p->file_name;?>" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -141,8 +141,8 @@
                                 <a href="/post/detail/<?= $p->post_id;?>" class="text-color text-decoration-none font-size-12">Read more <i data-feather="chevron-right" class="icon-12"></i></a>
                             </div>
                         </div>
-                    <?php endforeach;?>
                     </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
