@@ -15,9 +15,9 @@ class Home extends BaseController
 			$model = new UserModel();
 			$data =  $model->where('user_id', $userId)->first();
 			$name = $data['name'];
-			return view('landing', ['name' => $name]);
+			return view('index', ['name' => $name]);
 		} else {
-			return view('landing', ['name' => $name]);
+			return view('index', ['name' => $name]);
 		}
 	}
 
