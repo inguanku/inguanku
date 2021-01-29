@@ -125,7 +125,7 @@
                     <?php foreach ($post as $p) : ?>
                         <div class="col-12 col-sm-6 col-lg-3">
                             <div class="card border-0 shadow-sm">
-                                <img src="./images/post/<?= $p->file_name; ?>" class="card-img-top" alt="...">
+                                <img src="./images/post/<?= $p->file_name; ?>" class="card-img-top thumb-post" alt="...">
                                 <div class="card-body">
                                     <p class="card-text d-flex justify-content-between">
                                         <span class="uppercase font-size-12 main-color font-weight-medium"><?= $p->category; ?></span>
