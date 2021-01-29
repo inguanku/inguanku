@@ -135,6 +135,9 @@ footer {
   width: 150px;
   height: 150px;
 }
+.text-orange {
+  color: #ffc107;
+}
 
 /* [class*="col"] {
   outline: 1px solid red;
