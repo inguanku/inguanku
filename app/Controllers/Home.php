@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\PostModel;
 
 class Home extends BaseController
 {
@@ -11,16 +12,22 @@ class Home extends BaseController
 		$session = session();
 		$userId = $session->get('id');
 		$name = null;
+		$modelPost = new PostModel();
 		if ($userId) {
-			$model = new UserModel();
-			$data =  $model->where('user_id', $userId)->first();
-			$name = $data['name'];
-			return view('index', ['name' => $name]);
+			$modelUser = new UserModel();
+			$data = [
+				'user' => $modelUser->where('user_id', $userId)->first(),
+				'post' => $modelPost->getRecent(),
+			];
+			return view('index', $data);
 		} else {
-			return view('index', ['name' => $name]);
+			$data = [
+				'post' => $post = $modelPost->getRecent(),
+				'user' => $name
+			];
+			return view('index', $data);
 		}
 	}
 
-	//--------------------------------------------------------------------
 
 }
