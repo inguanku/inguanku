@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="row pt-4 mt-3">
-                    <h5 class="text-color pt-2">How to use ?</h5>
+                        <h5 class="text-color pt-2">How to use ?</h5>
                         <div class="col-sm-4">
                             <i data-feather="search" class="icon-42 text-color d-block ms-auto me-auto"></i>
                             <p class="text-center font-size-14 text-color font-weight-medium mt-2">Search your favorite pet</p>
@@ -122,27 +122,27 @@
                     </h2>
                 </div>
                 <div class="row gy-lg-0 gy-5 wow wow animate__fadeInUp">
-                    <?php foreach($post as $p):?>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="card border-0 shadow-sm">
-                            <img src="./images/post/<?= $p->file_name;?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text d-flex justify-content-between">
-                                    <span class="uppercase font-size-12 main-color font-weight-medium"><?= $p->category; ?></span>
-                                    <span class="font-size-12 accent-text-color font-weight-medium">
-                                    <?php
-                                        $strDate = strtotime($p->date);
-                                        echo date('d-m-Y', $strDate);
-                                    ?>
-                                    </span>
-                                </p>
-                                <h6 class="card-title text-color"><?php echo $p->pet_name; ?></h6>
-                                <p class="card-text accent-text-color font-size-12"><?php echo $p->description; ?></p>
-                                <a href="/post/detail/<?= $p->post_id;?>" class="text-color text-decoration-none font-size-12">Read more <i data-feather="chevron-right" class="icon-12"></i></a>
+                    <?php foreach ($post as $p) : ?>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card border-0 shadow-sm">
+                                <img src="./images/post/<?= $p->file_name; ?>" class="card-img-top thumb-post" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text d-flex justify-content-between">
+                                        <span class="uppercase font-size-12 main-color font-weight-medium"><?= $p->category; ?></span>
+                                        <span class="font-size-12 accent-text-color font-weight-medium">
+                                            <?php
+                                            $strDate = strtotime($p->date);
+                                            echo date('d-m-Y', $strDate);
+                                            ?>
+                                        </span>
+                                    </p>
+                                    <h6 class="card-title text-color"><?php echo $p->pet_name; ?></h6>
+                                    <p class="card-text accent-text-color font-size-12"><?php echo $p->description; ?></p>
+                                    <a href="/post/detail/<?= $p->post_id; ?>" class="text-color text-decoration-none font-size-12">Read more <i data-feather="chevron-right" class="icon-12"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -163,10 +163,10 @@
                 <div class="col-sm-3">
                     <h6 class="font-weight-semibold">Quick Link</h6>
                     <ul class="accent-text-color font-size-14 pt-3 list-unstyled">
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Home</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Adoption</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Breeding</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Login</a></li>
+                        <li><a href="/" class="accent-text-color text-decoration-none text-white">Home</a></li>
+                        <li><a href="/post/adopt" class="accent-text-color text-decoration-none text-white">Adoption</a></li>
+                        <li><a href="/post/breed" class="accent-text-color text-decoration-none text-white">Breeding</a></li>
+                        <li><a href="/login" class="accent-text-color text-decoration-none text-white">Login</a></li>
                     </ul>
                 </div>
             </div>

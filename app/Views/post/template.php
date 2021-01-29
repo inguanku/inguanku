@@ -22,18 +22,18 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="/post/adopt">Adoption</a>
+                                <a class="nav-link text-dark fw-bold" href="/post/adopt">Adoption</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" href="/post/breed">Breeding</a>
+                                <a class="nav-link text-dark fw-bold" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
                         <?php if ($name) : ?>
-                            <?php echo '<a href="/user/profile" class="link-dark me-3">Hello, ' . $name . '</a>' ?>
-                            <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3">Logout</a>
+                            <?php echo '<a href="/user/profile" class="link-dark me-3 fw-bold">Hello, ' . $name . '</a>' ?>
+                            <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3 fw-bold">Logout</a>
                         <?php else : ?>
-                            <a href="/login" class="link-dark me-3">Login</a>
-                            <a href="/register" class="btn btn-warning rounded-pill btn-sm button">Register</a>
+                            <a href="/login" class="link-dark me-3 fw-bold">Login</a>
+                            <a href="/register" class="btn btn-warning rounded-pill btn-sm button fw-bold">Register</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
                 <div class="col-sm-3">
                     <h6 class="font-weight-semibold">Quick Link</h6>
                     <ul class="accent-text-color font-size-14 pt-3 list-unstyled">
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Home</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Adoption</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Breeding</a></li>
-                        <li><a href="#" class="accent-text-color text-decoration-none text-white">Login</a></li>
+                        <li><a href="/" class="accent-text-color text-decoration-none text-white">Home</a></li>
+                        <li><a href="/post/adopt" class="accent-text-color text-decoration-none text-white">Adoption</a></li>
+                        <li><a href="/post/breed" class="accent-text-color text-decoration-none text-white">Breeding</a></li>
+                        <li><a href="/login" class="accent-text-color text-decoration-none text-white">Login</a></li>
                     </ul>
                 </div>
             </div>
