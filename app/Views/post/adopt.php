@@ -30,7 +30,7 @@
                         <a href="#" class="link-dark">
                             <div class="konten">
                                 <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
-                                <a href="/post/add">
+                                <a href="/adopt/add">
                                     <div class="overlay">
                                         <h4 class="overlay-text">
                                             <i data-feather="plus-circle" class="add-icon"></i>
@@ -53,7 +53,7 @@
                             <a href="#" class="link-dark">
                                 <div class="konten">
                                     <img src="/images/post/<?= $data['file_name']; ?>" class="card-img thumb-post" alt="...">
-                                    <a href="/post/detail/<?= $data['post_id']; ?>">
+                                    <a href="/adopt/detail/<?= $data['post_id']; ?>">
                                         <div class="overlay">
                                             <h4 class="overlay-text">
                                                 Detail
