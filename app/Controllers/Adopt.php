@@ -23,10 +23,12 @@ class Adopt extends BaseController
         $data = [
             'title' => 'Add Adoption | Inguanku',
             'name' => $this->session->get('name'),
+            'heading' => 'Adoption',
+            'category' => 'adopt',
             'date' => Time::now(),
             'id' => $this->session->get('id')
         ];
-        return view('post/adopt/add', $data);
+        return view('post/add', $data);
     }
 
     public function process()
