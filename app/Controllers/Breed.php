@@ -6,7 +6,7 @@ use \CodeIgniter\I18n\Time;
 use App\Models\PostModel;
 use App\Models\PictureModel;
 
-class Adopt extends BaseController
+class Breed extends BaseController
 {
     protected $postModel;
     protected $pictureModel;
@@ -21,12 +21,12 @@ class Adopt extends BaseController
     public function add()
     {
         $data = [
-            'title' => 'Add Adoption | Inguanku',
+            'title' => 'Add Breeding | Inguanku',
             'name' => $this->session->get('name'),
             'date' => Time::now(),
             'id' => $this->session->get('id')
         ];
-        return view('post/adopt/add', $data);
+        return view('post/breed/add', $data);
     }
 
     public function process()
@@ -38,7 +38,7 @@ class Adopt extends BaseController
                 'date' => Time::now(),
                 'description' => $this->request->getVar('description'),
                 'sex' => $this->request->getVar('sex'),
-                'category' => 'Adopt',
+                'category' => 'Breed',
                 'type' => $this->request->getVar('type'),
                 'breed' => $this->request->getVar('breed'),
             ];
@@ -56,7 +56,7 @@ class Adopt extends BaseController
                 $img->move('images/post', $newName);
                 $this->pictureModel->insert_picture($data_picture);
             }
-            return redirect()->to('./post/adopt');
+            return redirect()->to('./post/breed');
         }
     }
 }

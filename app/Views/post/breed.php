@@ -25,13 +25,35 @@
         </div>
         <div class="col-md-7 col-lg-9">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <?php for ($i = 0; $i < 10; $i++) : ?>
+                <div class="col">
+                    <div class="card bg-warning shadow-sm">
+                        <a href="#" class="link-dark">
+                            <div class="konten">
+                                <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
+                                <a href="/breed/add">
+                                    <div class="overlay">
+                                        <h4 class="overlay-text">
+                                            <i data-feather="plus-circle" class="add-icon"></i>
+                                        </h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
+                        <div class=" card-body">
+                            <a href="#" class="link-dark">
+                                <h5 class="d-inline">ADD</h5>
+                            </a>
+                            <p class="card-text">Post your pet here!</p>
+                        </div>
+                    </div>
+                </div>
+                <?php foreach ($post as $data) : ?>
                     <div class="col">
                         <div class="card shadow-sm">
                             <a href="#" class="link-dark">
                                 <div class="konten">
-                                    <img src="/images/post/dog1.png" class="card-img thumb-post" alt="...">
-                                    <a href="/post/detail">
+                                    <img src="/images/post/<?= $data['file_name']; ?>" class="card-img thumb-post" alt="...">
+                                    <a href="/post/detail/<?= $data['post_id']; ?>">
                                         <div class="overlay">
                                             <h4 class="overlay-text">
                                                 Detail
@@ -42,13 +64,13 @@
                             </a>
                             <div class="card-body">
                                 <a href="#" class="link-dark">
-                                    <h5 class="d-inline">Dwi</h5>
+                                    <h5 class="d-inline"><?= $data['pet_name']; ?></h5>
                                 </a>
-                                <p class="card-text">Rancah</p>
+                                <p class="card-text"><?= $data['city']; ?></p>
                             </div>
                         </div>
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
