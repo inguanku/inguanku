@@ -47,6 +47,6 @@ class PostModel extends Model
     {
         return $this->db->table('tbl_post')
                         ->LIMIT(4)
-                        ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')->get()->getResult();
+                        ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')->orderBy('tbl_post.post_id','DESC')->get()->getResult();
     }
 }
