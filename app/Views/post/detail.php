@@ -34,6 +34,9 @@
                     <h3><?= $dataDetail[0]['pet_name']; ?> - <?= $dataDetail[0]['city']; ?></h3>
                 </div>
                 <div class="col-12">
+                    <p>Type : <?= $dataDetail[0]['type']; ?></p>
+                </div>
+                <div class="col-12">
                     <p>Breed : <?= $dataDetail[0]['breed']; ?></p>
                 </div>
                 <div class="col-12">
