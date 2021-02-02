@@ -2,19 +2,21 @@
 
 namespace App\Controllers;
 
-use \CodeIgniter\I18n\Time;
+use App\Models\UserModel;
 use App\Models\PostModel;
 use App\Models\PictureModel;
 
 class Post extends BaseController
 {
     protected $postModel;
+    protected $userModel;
     protected $pictureModel;
     protected $session;
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->pictureModel = new PictureModel();
+        $this->userModel = new UserModel();
         $this->session = session();
     }
 
@@ -25,7 +27,7 @@ class Post extends BaseController
             'title' => 'Adoption | Inguanku',
             'heading' => 'Adoption',
             'category' => 'adopt',
-            'name' => $this->session->get('name'),
+            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'post' => $postData
         ];
         return view('post/index', $data);
@@ -38,7 +40,7 @@ class Post extends BaseController
             'title' => 'Breeding | Inguanku',
             'heading' => 'Breeding',
             'category' => 'breed',
-            'name' => $this->session->get('name'),
+            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'post' => $postData
         ];
         return view('post/index', $data);
@@ -51,6 +53,7 @@ class Post extends BaseController
         $data = [
             'title' => 'Detail | Inguanku',
             'name' => $this->session->get('name'),
+            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'user_id' => $this->session->get('id'),
             'dataDetail' => $dataDetail,
             'segment' => $postId
@@ -72,10 +75,9 @@ class Post extends BaseController
         switch ($category) {
             case 'Adopt':
                 return redirect()->to('./post/adopt');
-                break;
             case 'Breed':
                 return redirect()->to('./post/breed');
-                break;
         }
+        return redirect()->to('./');
     }
 }

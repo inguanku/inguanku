@@ -28,8 +28,8 @@
                                 <a class="nav-link text-dark fw-bold" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
-                        <?php if ($name) : ?>
-                            <?php echo '<a href="/user/profile" class="link-dark me-3 fw-bold">Hello, ' . $name . '</a>' ?>
+                        <?php if ($user): ?>
+                            <?php echo '<a href="/user/profile" class="me-3 fw-bold btn btn-sm btn-primary rounded-pill"> <img src="/images/avatar/'. $user['avatar'] .'" class="little-avatar rounded-pill">' . $user['name'] . '</a>' ?>
                             <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3 fw-bold">Logout</a>
                         <?php else : ?>
                             <a href="/login" class="link-dark me-3 fw-bold">Login</a>

@@ -31,7 +31,7 @@
                             </ul>
 
                             <?php if ($user != null) : ?>
-                                <?php echo '<a href="/user/profile" class="link-light me-3 fw-bold">Hello, ' . $user['name'] . '</a>' ?>
+                                <?php echo '<a href="/user/profile" class="me-3 fw-bold btn btn-sm btn-primary rounded-pill"> <img src="/images/avatar/'. $user['avatar'] .'" class="little-avatar rounded-pill">' . $user['name'] . '</a>' ?>
                                 <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3 fw-bold">Logout</a>
                             <?php else : ?>
                                 <a href="/login" class="link-light me-3 fw-bold">Login</a>

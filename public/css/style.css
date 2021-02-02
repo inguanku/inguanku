@@ -139,6 +139,13 @@ footer {
   color: #ffc107;
 }
 
+.little-avatar {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
 /* [class*="col"] {
   outline: 1px solid red;
 } */
