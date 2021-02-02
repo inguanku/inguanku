@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
 use \CodeIgniter\I18n\Time;
 use App\Models\PostModel;
 use App\Models\PictureModel;
@@ -10,11 +11,13 @@ class Breed extends BaseController
 {
     protected $postModel;
     protected $pictureModel;
+    protected $userModel;
     protected $session;
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->pictureModel = new PictureModel();
+        $this->userModel = new UserModel();
         $this->session = session();
     }
 
@@ -22,7 +25,7 @@ class Breed extends BaseController
     {
         $data = [
             'title' => 'Add Breeding | Inguanku',
-            'name' => $this->session->get('name'),
+            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'heading' => 'Breeding',
             'category' => 'breed',
             'date' => Time::now(),
@@ -58,7 +61,7 @@ class Breed extends BaseController
                 $img->move('images/post', $newName);
                 $this->pictureModel->insert_picture($data_picture);
             }
-            return redirect()->to('./post/breed');
         }
+        return redirect()->to('./post/breed');
     }
 }

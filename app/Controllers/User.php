@@ -27,6 +27,7 @@ class User extends BaseController
                 $ses_data = [
                     'id' => $id,
                     'name' => $data['name'],
+                    'avatar' => $data['avatar'],
                     'logged_in'     => TRUE
                 ];
                 $this->session->set($ses_data);
@@ -45,10 +46,9 @@ class User extends BaseController
     {
         $id = $this->session->get('id');
         $dataProfil = $this->userModel->getProfile($id);
-        $name = $dataProfil['name'];
         $data = [
             'title' => 'Profile | Inguanku',
-            'name' => $name,
+            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'profile' => $dataProfil
         ];
         return view('user/profile', $data);
@@ -82,11 +82,11 @@ class User extends BaseController
             ];
 
             $this->userModel->save($data);
-            return redirect()->to('./login');
         } else {
             $data['validation'] = $this->validator;
             echo view('user/register', $data);
         }
+        return redirect()->to('./login');
     }
 
 
