@@ -29,7 +29,11 @@
                             </li>
                         </ul>
                         <?php if ($user): ?>
-                            <?php echo '<a href="/user/profile" class="me-3 fw-bold btn btn-sm btn-primary rounded-pill"> <img src="/images/avatar/'. $user['avatar'] .'" class="little-avatar rounded-pill">' . $user['name'] . '</a>' ?>
+                            <?php if ($user['avatar']): ?>
+                                <?php echo '<a href="/user/profile" class="me-3 fw-bold btn btn-sm btn-primary rounded-pill"> <img src="/images/avatar/'. $user['avatar'] .'" class="little-avatar rounded-pill">' . $user['name'] . '</a>' ?>
+                            <?php else: ?>
+                                <?php echo '<a href="/user/profile" class="me-3 fw-bold btn btn-sm btn-primary rounded-pill"> <img src="/images/avatar/default.jpg" class="little-avatar rounded-pill">' . $user['name'] . '</a>' ?>
+                            <?php endif; ?>
                             <a href="/user/logout" class="btn btn-sm btn-warning rounded-pill me-3 fw-bold">Logout</a>
                         <?php else : ?>
                             <a href="/login" class="link-dark me-3 fw-bold">Login</a>
