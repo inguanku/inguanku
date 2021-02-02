@@ -19,8 +19,8 @@ class User extends BaseController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('passwd');
         $data = $this->userModel->where('email', $email)->first();
-        $id = $data['user_id'];
         if ($data) {
+            $id = $data['user_id'];
             $pass = $data['passwd'];
             $verify_pass = password_verify($password, $pass);
             if ($verify_pass) {
