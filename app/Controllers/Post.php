@@ -29,14 +29,10 @@ class Post extends BaseController
 
         $location = $this->request->getVar('location');
         $postData = $this->postModel->getPostData('adopt', $location);
-
-        $session = session();
-        $postData = $this->postModel->getPostData('adopt');
-        $postModel = new PostModel();
-        if($session)
+        if($this->session)
         {
-            $userId = $session->get('id');
-            $postRequest = $postModel->postRequest($userId);
+            $userId = $this->session->get('id');
+            $postRequest = $this->postModel->postRequest($userId);
         }
 
         $data = [
@@ -57,14 +53,10 @@ class Post extends BaseController
 
         $location = $this->request->getVar('location');
         $postData = $this->postModel->getPostData('breed', $location);
-
-        $session = session();
-        $postModel = new PostModel();
-        $postData = $this->postModel->getPostData('breed');
-        if($session)
+        if($this->session)
         {
-            $userId = $session->get('id');
-            $postRequest = $postModel->postRequest($userId);
+            $userId = $this->session->get('id');
+            $postRequest = $this->postModel->postRequest($userId);
         }
 
         $data = [
@@ -85,12 +77,11 @@ class Post extends BaseController
         $postModel = new PostModel();
         $postId = $this->request->uri->getSegment(3);
         $dataDetail = $this->postModel->getDetail($postId);
-        
-        $session = session();
-        $userId = $session->get('id');
+
+        $userId = $this->session->get('id');
         if(($userId))
         {
-            $userId = $session->get('id');
+            $userId = $this->session->get('id');
             $dataRequest = [
                 'user_id' => $this->session->get('id'),
                 'post_id' => $this->request->uri->getSegment(3),
