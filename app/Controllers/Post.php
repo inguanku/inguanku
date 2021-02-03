@@ -22,12 +22,15 @@ class Post extends BaseController
 
     public function adopt()
     {
-        $postData = $this->postModel->getPostData('adopt');
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('adopt', $location);
         $data = [
             'title' => 'Adoption | Inguanku',
             'heading' => 'Adoption',
             'category' => 'adopt',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData
         ];
         return view('post/index', $data);
@@ -35,12 +38,15 @@ class Post extends BaseController
 
     public function breed()
     {
-        $postData = $this->postModel->getPostData('breed');
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('breed', $location);
         $data = [
             'title' => 'Breeding | Inguanku',
             'heading' => 'Breeding',
             'category' => 'breed',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData
         ];
         return view('post/index', $data);
