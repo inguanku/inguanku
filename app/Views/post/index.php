@@ -6,20 +6,21 @@
     <h2 class="mb-4"><?= $heading; ?></h2>
     <div class="row g-3">
         <div class="col-md-5 col-lg-3 order-md-last">
-            <form action="">
+            <form action="/post/<?= $category; ?>" method="GET" >
                 <div class="mb-3 text-center">
                     <label for="location" class="col-form-label">Location</label>
-                    <select class="form-select shadow-sm" id="location">
-                        <option value="">All</option>
-                    </select>
-                </div>
-                <div class="mb-3 text-center">
-                    <label for="location" class="col-form-label">Category</label>
-                    <select class="form-select shadow-sm" id="location">
-                        <option value="">All</option>
-                        <option value="">Cat</option>
-                        <option value="">Dog</option>
-                    </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <select class="form-select shadow-sm" id="location" name="location">
+                                <option value="">All</option>
+                                <?php foreach ($userData as $row):?>
+                                    <option value="<?= $row['city'];?>" <?= ($row['city'] == $selectedLocation)? 'selected': null;?>><?= $row['city'];?></option>
+                                <?php endforeach;?>
+                            </select></div>
+                        <div class="col-6">
+                            <button class="btn btn-primary">search</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
