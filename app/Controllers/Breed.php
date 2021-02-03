@@ -23,13 +23,19 @@ class Breed extends BaseController
 
     public function add()
     {
+        if($this->session)
+        {
+            $userId = $this->session->get('id');
+            $postRequest = $this->postModel->postRequest($userId);
+        }
         $data = [
             'title' => 'Add Breeding | Inguanku',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'heading' => 'Breeding',
             'category' => 'breed',
             'date' => Time::now(),
-            'id' => $this->session->get('id')
+            'id' => $this->session->get('id'),
+            'postRequest' => $postRequest
         ];
         return view('post/add', $data);
     }
