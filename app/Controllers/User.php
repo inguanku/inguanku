@@ -91,11 +91,11 @@ class User extends BaseController
             ];
 
             $this->userModel->save($data);
+            return redirect()->to('./login');
         } else {
             $data['validation'] = $this->validator;
-            echo view('user/register', $data);
+            return view('user/register', $data);
         }
-        return redirect()->to('./login');
     }
 
 
