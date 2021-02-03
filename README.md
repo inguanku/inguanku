@@ -36,6 +36,10 @@ We'll assume you have composer installed
 
 `php spark migrate`
 
+## Seeding dummy post data
+
+`php spark db:seed PostDummy`
+
 ## Start running project
 
 1. Start running your project
