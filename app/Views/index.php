@@ -176,7 +176,6 @@
                         <li><a href="/" class="accent-text-color text-decoration-none text-white">Home</a></li>
                         <li><a href="/post/adopt" class="accent-text-color text-decoration-none text-white">Adoption</a></li>
                         <li><a href="/post/breed" class="accent-text-color text-decoration-none text-white">Breeding</a></li>
-                        <li><a href="/login" class="accent-text-color text-decoration-none text-white">Login</a></li>
                     </ul>
                 </div>
             </div>
