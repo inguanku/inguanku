@@ -50,7 +50,6 @@ class Post extends BaseController
         $session = session();
         $postModel = new PostModel();
         $postData = $this->postModel->getPostData('breed');
-        $postModel = new PostModel();
         if($session)
         {
             $userId = $session->get('id');
