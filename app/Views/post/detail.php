@@ -57,7 +57,19 @@
                 <div class="card-body">
                     <h3 class="card-text"><?= $dataDetail[0]['name']; ?></h3>
                     <p class="card-text"><?= $dataDetail[0]['phone']; ?></p>
-                    <?= ($dataDetail[0]['user_id'] == $user_id) ? "<a href='/post/delete/$segment' class='mt-1 mx-auto d-block btn btn-danger'>Delete Post</a>" : "<a href='#' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>"; ?>
+                    <?php 
+                        if($dataDetail[0]['user_id'] == $user_id)
+                        {
+                            echo "<a href='/post/delete/$segment' class='mt-1 mx-auto d-block btn btn-danger'>Delete Post</a>";
+                        }elseif($checkRequest) {
+                            // var_dump($checkRequest);
+                            echo "<a class='bmt-1 mx-auto d-block btn btn-success'>Requested</a>";
+                        }elseif(!$user) {
+                            echo "<a class='bmt-1 mx-auto d-block btn btn-info' disabled>Login/Register to Request</a>";
+                        }else {
+                            echo "<a href='/post/request/$segment' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
