@@ -64,10 +64,10 @@
                         }elseif($checkRequest) {
                             // var_dump($checkRequest);
                             echo "<a class='bmt-1 mx-auto d-block btn btn-success'>Requested</a>";
-                        }elseif(isset($userId)) {
-                            echo "<a href='/post/request/$segment' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>";
-                        }else {
+                        }elseif(!$user) {
                             echo "<a class='bmt-1 mx-auto d-block btn btn-info' disabled>Login/Register to Request</a>";
+                        }else {
+                            echo "<a href='/post/request/$segment' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>";
                         }
                     ?>
                 </div>
