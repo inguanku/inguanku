@@ -26,6 +26,10 @@ class Post extends BaseController
 
     public function adopt()
     {
+
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('adopt', $location);
+
         $session = session();
         $postData = $this->postModel->getPostData('adopt');
         $postModel = new PostModel();
@@ -34,19 +38,26 @@ class Post extends BaseController
             $userId = $session->get('id');
             $postRequest = $postModel->postRequest($userId);
         }
+
         $data = [
             'title' => 'Adoption | Inguanku',
             'heading' => 'Adoption',
             'category' => 'adopt',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData,
-            'postRequest' => $postRequest,
+            'postRequest' => $postRequest
         ];
         return view('post/index', $data);
     }
 
     public function breed()
     {
+
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('breed', $location);
+
         $session = session();
         $postModel = new PostModel();
         $postData = $this->postModel->getPostData('breed');
@@ -55,11 +66,14 @@ class Post extends BaseController
             $userId = $session->get('id');
             $postRequest = $postModel->postRequest($userId);
         }
+
         $data = [
             'title' => 'Breeding | Inguanku',
             'heading' => 'Breeding',
             'category' => 'breed',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData,
             'postRequest' => $postRequest
         ];
