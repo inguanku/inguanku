@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Models\PostModel;
 use App\Models\UserModel;
 
 class User extends BaseController
 {
+    protected $postModel;
     protected $userModel;
     protected $session;
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->postModel = new PostModel();
         $this->session = session();
     }
 
@@ -44,12 +47,18 @@ class User extends BaseController
 
     public function profile()
     {
+        if($this->session)
+        {
+            $userId = $this->session->get('id');
+            $postRequest = $this->postModel->postRequest($userId);
+        }
         $id = $this->session->get('id');
         $dataProfil = $this->userModel->getProfile($id);
         $data = [
             'title' => 'Profile | Inguanku',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-            'profile' => $dataProfil
+            'profile' => $dataProfil,
+            'postRequest' => $postRequest
         ];
         return view('user/profile', $data);
     }
@@ -82,11 +91,11 @@ class User extends BaseController
             ];
 
             $this->userModel->save($data);
+            return redirect()->to('./login');
         } else {
             $data['validation'] = $this->validator;
-            echo view('user/register', $data);
+            return view('user/register', $data);
         }
-        return redirect()->to('./login');
     }
 
 
