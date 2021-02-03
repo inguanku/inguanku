@@ -23,13 +23,21 @@ class Adopt extends BaseController
 
     public function add()
     {
+        $session = session();
+        $postModel = new PostModel();
+        if($session)
+        {
+            $userId = $session->get('id');
+            $postRequest = $postModel->postRequest($userId);
+        }
         $data = [
             'title' => 'Add Adoption | Inguanku',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'heading' => 'Adoption',
             'category' => 'adopt',
             'date' => Time::now(),
-            'id' => $this->session->get('id')
+            'id' => $this->session->get('id'),
+            'postRequest' => $postRequest
         ];
         return view('post/add', $data);
     }
