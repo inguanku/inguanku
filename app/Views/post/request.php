@@ -3,38 +3,26 @@
 <?= $this->section('content'); ?>
 <div class="container shadow my-5 bg-white p-5">
     <h1>Request List Need Confirm</h1>
-
-    <table class="table caption-top">
-    <caption>List of users</caption>
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        </tr>
-    </tbody>
-    </table>
+    <ul class="list-group">
+        <?php foreach ($postRequest as $request): ?>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col">
+                        <img src="/images/avatar/<?= ($request->avatar == '')? 'default.jpg': $request->avatar; ?>" class="little-avatar rounded-pill">
+                        <span class="fw-bold"><?= $request->name ?></span> Requested to <?= $request->category ?>
+                        <img src="/images/post/<?= $request->file_name; ?>"  class="little-avatar rounded-pill"> <span class="fw-bold"><?= $request->pet_name ?></span>
+                    </div>
+                    <div class="col-1">
+                        <span class="badge bg-warning"><?= $request->status ?></span>
+                    </div>
+                    <div class="col">
+                        <a href="" class="btn btn-sm btn-danger float-end mx-1">Decline</a>
+                        <a href="" class="btn btn-sm btn-primary float-end mx-1">Accept</a>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach;?>
+    </ul>
 </div>
 
 <?= $this->endSection(); ?>
