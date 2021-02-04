@@ -14,6 +14,7 @@ class Post extends BaseController
     protected $pictureModel;
     protected $requestModel;
     protected $session;
+
     public function __construct()
     {
         $this->postModel = new PostModel();
@@ -136,33 +137,28 @@ class Post extends BaseController
     }
 
     public function request($id){
-        // $postId = ;
-        // (int)$postId;
-        // dd($postId);
         $data = [
             'user_id' => $this->session->get('id'),
             'post_id' => (int)$this->request->uri->getSegment(3),
             'status' => "Pending"
         ];
 
-        // dd($data);
         $this->requestModel->insert($data);
         return redirect()->to('./post/detail/'.$id);
     }
 
-    public function confirm()
+    public function requestList()
     {
-
-        $session = session();
-        $userId = $session->get('id');
-        $postModel = new PostModel();
+        $userId = $this->session->get('id');
 
         if($userId)
         {
+            $postRequest = $this->postModel->postRequest($userId);
+
             $data = [
-            'title' => "Confirm",
-            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-            'postRequest' => $postRequest = $postModel->postRequest($userId),
+            'title' => "Request List | Inguanku",
+            'user' => $this->userModel->where('user_id', $userId)->first(),
+            'postRequest' => $postRequest
             ];
         }
         

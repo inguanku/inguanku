@@ -62,17 +62,13 @@ class PostModel extends Model
                     ->get()->getResult();
     }
 
-    public function postRequest($id)
+    public function postRequest($userId)
     {
-        // $db = \Config\Database::connect();
-        // $builder = $db->table('tbl_request');
-        // return $builder->countAll()
-        //             ->join('tbl_post.post_id', 'tbl_request.post_id');
-        // $query = $this->db->query("SELECT COUNT(tbl_request.post_id) FROM tbl_request JOIN tbl_post WHERE tbl_post.post_id = tbl_request.post_id AND tbl_post.user_id = $id");
-        // return $query->getRow();
-
         return $this->db->table('tbl_post')
                         ->join('tbl_request', 'tbl_request.post_id = tbl_post.post_id')
-                        ->where('tbl_post.user_id', $id)->get()->getResult();
+                        ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
+                        ->join('tbl_picture', 'tbl_post.post_id = tbl_picture.post_id')
+                        ->where('tbl_post.user_id', $userId)
+                        ->get()->getResult();
     }
 }
