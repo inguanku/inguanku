@@ -39,7 +39,7 @@
                                     <?php endif; ?>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Request <span class="badge bg-warning"><?= count($postRequest);?></span></a></li>
+                                        <li><a class="dropdown-item" href="/post/requestList">Request <span class="badge bg-warning"><?= count($postRequest);?></span></a></li>
                                         <li><a href="/user/logout" class="dropdown-item">Logout</a></li>
                                     </ul>
                                 </div>
