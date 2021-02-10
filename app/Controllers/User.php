@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\PostModel;
+use App\Models\TransactionModel;
 use App\Models\UserModel;
 
 class User extends BaseController
@@ -10,10 +11,12 @@ class User extends BaseController
     protected $postModel;
     protected $userModel;
     protected $session;
+    protected $transactionModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->postModel = new PostModel();
+        $this->transactionModel = new TransactionModel();
         $this->session = session();
     }
 
@@ -51,14 +54,17 @@ class User extends BaseController
         {
             $userId = $this->session->get('id');
             $postRequest = $this->postModel->postRequest($userId);
+            $transactions = $this->transactionModel->getTransactions($userId);
         }
+
         $id = $this->session->get('id');
         $dataProfil = $this->userModel->getProfile($id);
         $data = [
             'title' => 'Profile | Inguanku',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
             'profile' => $dataProfil,
-            'postRequest' => $postRequest
+            'postRequest' => $postRequest,
+            'transactions' => $transactions
         ];
         return view('user/profile', $data);
     }
