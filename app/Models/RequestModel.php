@@ -22,4 +22,11 @@ class RequestModel extends Model
         $query = $db->query("SELECT request_id FROM tbl_request WHERE user_id = $userId AND post_id = $postId");
         return $row = $query->getRow();
     }
+
+    public function requestList($data)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM tbl_request WHERE user_id = $data");
+        return $query->getResult();
+    }
 }

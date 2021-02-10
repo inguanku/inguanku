@@ -4,11 +4,11 @@
 <div class="container shadow my-5 bg-white p-5">
     <h1>Request List Need Confirm</h1>
 
+    
     <table class="table caption-top">
-    <caption>List of users</caption>
     <thead>
         <tr>
-        <th scope="col">#</th>
+        <th scope="col"></th>
         <th scope="col">First</th>
         <th scope="col">Last</th>
         <th scope="col">Handle</th>
@@ -35,6 +35,7 @@
         </tr>
     </tbody>
     </table>
+    
 </div>
 
 <?= $this->endSection(); ?>
