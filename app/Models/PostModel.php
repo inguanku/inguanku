@@ -68,7 +68,7 @@ class PostModel extends Model
                         ->join('tbl_request', 'tbl_request.post_id = tbl_post.post_id')
                         ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
                         ->join('tbl_picture', 'tbl_post.post_id = tbl_picture.post_id')
-                        ->where('tbl_post.user_id', $userId)
+                        ->where(['tbl_post.user_id'=> $userId, 'tbl_post.status' => 'Available', 'tbl_request.status' => 'Pending'])
                         ->get()->getResult();
     }
 }
