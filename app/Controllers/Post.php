@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\TransactionModel;
 use App\Models\UserModel;
 use App\Models\PostModel;
 use App\Models\PictureModel;
@@ -14,54 +15,61 @@ class Post extends BaseController
     protected $pictureModel;
     protected $requestModel;
     protected $session;
+    protected $transactionModel;
+
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->pictureModel = new PictureModel();
         $this->userModel = new UserModel();
         $this->requestModel = new RequestModel;
+        $this->transactionModel = new TransactionModel();
         $this->session = session();
         
     }
 
     public function adopt()
     {
-        $session = session();
-        $postData = $this->postModel->getPostData('adopt');
-        $postModel = new PostModel();
-        if($session)
-        {
-            $userId = $session->get('id');
-            $postRequest = $postModel->postRequest($userId);
-        }
+
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('adopt', $location);
+        $userId = $this->session->get('id');
+        $postRequest = $this->postModel->postRequest($userId);
+        $transactions = $this->transactionModel->getTransactions($userId);
+
         $data = [
             'title' => 'Adoption | Inguanku',
             'heading' => 'Adoption',
             'category' => 'adopt',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData,
             'postRequest' => $postRequest,
+            'transactions' => $transactions
         ];
         return view('post/index', $data);
     }
 
     public function breed()
     {
-        $session = session();
-        $postModel = new PostModel();
-        $postData = $this->postModel->getPostData('breed');
-        if($session)
-        {
-            $userId = $session->get('id');
-            $postRequest = $postModel->postRequest($userId);
-        }
+
+        $location = $this->request->getVar('location');
+        $postData = $this->postModel->getPostData('breed', $location);
+        $userId = $this->session->get('id');
+        $postRequest = $this->postModel->postRequest($userId);
+        $transactions = $this->transactionModel->getTransactions($userId);
+
         $data = [
             'title' => 'Breeding | Inguanku',
             'heading' => 'Breeding',
             'category' => 'breed',
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+            'userData' => $this->userModel->findAll(),
+            'selectedLocation' => $location,
             'post' => $postData,
-            'postRequest' => $postRequest
+            'postRequest' => $postRequest,
+            'transactions' => $transactions
         ];
         return view('post/index', $data);
     }
@@ -71,12 +79,13 @@ class Post extends BaseController
         $postModel = new PostModel();
         $postId = $this->request->uri->getSegment(3);
         $dataDetail = $this->postModel->getDetail($postId);
-        
-        $session = session();
-        $userId = $session->get('id');
+        $userId = $this->session->get('id');
+        $transactions = $this->transactionModel->getTransactions($userId);
+
+        $userId = $this->session->get('id');
         if(($userId))
         {
-            $userId = $session->get('id');
+            $userId = $this->session->get('id');
             $dataRequest = [
                 'user_id' => $this->session->get('id'),
                 'post_id' => $this->request->uri->getSegment(3),
@@ -91,7 +100,8 @@ class Post extends BaseController
                 'dataDetail' => $dataDetail,
                 'segment' => $postId,
                 'postRequest' => $postRequest = $postModel->postRequest($userId),
-                'checkRequest' => $checkRequest
+                'checkRequest' => $checkRequest,
+                'transactions' => $transactions
             ];
             return view('post/detail', $data);
         }
@@ -105,7 +115,8 @@ class Post extends BaseController
             'dataDetail' => $dataDetail,
             'segment' => $postId,
             'postRequest' => $postRequest = $postModel->postRequest($userId),
-            'checkRequest' => false
+            'checkRequest' => false,
+            'transactions' => $transactions
         ];
         return view('post/detail', $data);
     }
@@ -131,29 +142,22 @@ class Post extends BaseController
     }
 
     public function request($id){
-        // $postId = ;
-        // (int)$postId;
-        // dd($postId);
         $data = [
             'user_id' => $this->session->get('id'),
             'post_id' => (int)$this->request->uri->getSegment(3),
             'status' => "Pending"
         ];
 
-        // dd($data);
         $this->requestModel->insert($data);
         return redirect()->to('./post/detail/'.$id);
     }
 
-    public function confirm()
+    public function requestList()
     {
-
-        $session = session();
-        $userId = $session->get('id');
-        $postModel = new PostModel();
-
+        $userId = $this->session->get('id');
         if($userId)
         {
+<<<<<<< HEAD
             
             $user_id = $this->session->get('id');
             
@@ -174,5 +178,22 @@ class Post extends BaseController
             'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
         ];
         return redirect()->to('./user/auth');
+=======
+            $postRequest = $this->postModel->postRequest($userId);
+            $transactions = $this->transactionModel->getTransactions($userId);
+            $myRequests = $this->requestModel->getMyRequest($userId);
+
+            $data = [
+                'title' => "Request List | Inguanku",
+                'user' => $this->userModel->where('user_id', $userId)->first(),
+                'postRequest' => $postRequest,
+                'transactions' => $transactions,
+                'myRequests' => $myRequests
+            ];
+            return view('post/request', $data);
+        } else {
+            return redirect()->to("/login");
+        }
+>>>>>>> develop
     }
 }

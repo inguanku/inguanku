@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\TransactionModel;
 use App\Models\UserModel;
 use \CodeIgniter\I18n\Time;
 use App\Models\PostModel;
@@ -13,25 +14,39 @@ class Breed extends BaseController
     protected $pictureModel;
     protected $userModel;
     protected $session;
+    protected $transactionModel;
+
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->pictureModel = new PictureModel();
         $this->userModel = new UserModel();
+        $this->transactionModel = new TransactionModel();
         $this->session = session();
     }
 
     public function add()
     {
-        $data = [
-            'title' => 'Add Breeding | Inguanku',
-            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-            'heading' => 'Breeding',
-            'category' => 'breed',
-            'date' => Time::now(),
-            'id' => $this->session->get('id')
-        ];
-        return view('post/add', $data);
+        $userId = $this->session->get('id');
+        if($userId)
+        {
+            $postRequest = $this->postModel->postRequest($userId);
+            $transactions = $this->transactionModel->getTransactions($userId);
+
+            $data = [
+                'title' => 'Add Breeding | Inguanku',
+                'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+                'heading' => 'Breeding',
+                'category' => 'breed',
+                'date' => Time::now(),
+                'id' => $this->session->get('id'),
+                'postRequest' => $postRequest,
+                'transactions' => $transactions
+            ];
+            return view('post/add', $data);
+        } else {
+            return redirect()->to("/login");
+        }
     }
 
     public function process()
