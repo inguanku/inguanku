@@ -157,28 +157,6 @@ class Post extends BaseController
         $userId = $this->session->get('id');
         if($userId)
         {
-<<<<<<< HEAD
-            
-            $user_id = $this->session->get('id');
-            
-            $listRequest = $this->requestModel->requestList($user_id);
-            var_dump($listRequest);
-
-            $data = [
-            'title' => "Confirm",
-            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-            'postRequest' => $postRequest = $postModel->postRequest($userId),
-            'listRequest' => $listRequest,
-            ];
-            return view('post/request', $data);
-        }
-        
-        $data = [
-            'title' => "confirm request",
-            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-        ];
-        return redirect()->to('./user/auth');
-=======
             $postRequest = $this->postModel->postRequest($userId);
             $transactions = $this->transactionModel->getTransactions($userId);
             $myRequests = $this->requestModel->getMyRequest($userId);
@@ -194,6 +172,5 @@ class Post extends BaseController
         } else {
             return redirect()->to("/login");
         }
->>>>>>> develop
     }
 }
