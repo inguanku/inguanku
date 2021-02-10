@@ -62,10 +62,9 @@
                         {
                             echo "<a href='/post/delete/$segment' class='mt-1 mx-auto d-block btn btn-danger'>Delete Post</a>";
                         }elseif($checkRequest) {
-                            // var_dump($checkRequest);
                             echo "<a class='bmt-1 mx-auto d-block btn btn-success'>Requested</a>";
                         }elseif(!$user) {
-                            echo "<a class='bmt-1 mx-auto d-block btn btn-info' disabled>Login/Register to Request</a>";
+                            echo "<a href='/login' class='bmt-1 mx-auto d-block btn btn-info' disabled>Login to Request</a>";
                         }else {
                             echo "<a href='/post/request/$segment' class='mt-1 mx-auto d-block btn btn-warning'>Request Me!</a>";
                         }
