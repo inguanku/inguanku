@@ -13,11 +13,11 @@
                 <?php endif; ?>
                 <div class="mb-3">
                     <label for="pictures" class="form-label">Pictures</label>
-                    <input type="file" class="form-control" name="pictures[]" id="pictures" multiple>
+                    <input type="file" class="form-control" name="pictures[]" id="pictures" multiple required>
                 </div>
                 <div class="mb-3">
                     <label for="petName" class="form-label">Pet Name</label>
-                    <input type="text" class="form-control" id="petName" name="petName">
+                    <input type="text" class="form-control" id="petName" name="petName" required>
                 </div>
                 <div class="mb-3">
                     <label for="sex" class="form-label">Sex</label>
@@ -35,11 +35,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="breed" class="form-label">Breed</label>
-                    <input type="text" class="form-control" id="breed" name="breed" value="">
+                    <input type="text" class="form-control" id="breed" name="breed" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <textarea class="form-control" id="description" name="description" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-warning">Save</button>
             </div>

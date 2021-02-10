@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\TransactionModel;
 use App\Models\UserModel;
 use \CodeIgniter\I18n\Time;
 use App\Models\PostModel;
@@ -13,31 +14,40 @@ class Adopt extends BaseController
     protected $pictureModel;
     protected $userModel;
     protected $session;
+    protected $transactionModel;
+
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->pictureModel = new PictureModel();
         $this->userModel = new UserModel();
+        $this->transactionModel = new TransactionModel();
         $this->session = session();
     }
 
     public function add()
     {
-        if($this->session)
+        $userId = $this->session->get('id');
+        if($userId)
         {
-            $userId = $this->session->get('id');
             $postRequest = $this->postModel->postRequest($userId);
+            $transactions = $this->transactionModel->getTransactions($userId);
+
+            $data = [
+                'title' => 'Add Adoption | Inguanku',
+                'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
+                'heading' => 'Adoption',
+                'category' => 'adopt',
+                'date' => Time::now(),
+                'id' => $this->session->get('id'),
+                'postRequest' => $postRequest,
+                'transactions' => $transactions
+            ];
+            return view('post/add', $data);
+        } else {
+            return redirect()->to("/login");
         }
-        $data = [
-            'title' => 'Add Adoption | Inguanku',
-            'user' => $this->userModel->where('user_id', $this->session->get('id'))->first(),
-            'heading' => 'Adoption',
-            'category' => 'adopt',
-            'date' => Time::now(),
-            'id' => $this->session->get('id'),
-            'postRequest' => $postRequest
-        ];
-        return view('post/add', $data);
+
     }
 
     public function process()
