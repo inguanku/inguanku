@@ -8,15 +8,25 @@ use CodeIgniter\Model;
 class RequestModel extends Model
 {
     protected $table = 'tbl_request';
-    protected $primaryKey = 'requset_id';
+    protected $primaryKey = 'request_id';
     protected $allowedFields = ['user_id', 'post_id', 'status'];
 
     public function checkRequest($data)
     {
-        $userId = $data['user_id'];
-        $postId = $data['post_id'];
-        $db = \Config\Database::connect();
-        $query = $db->query("SELECT request_id FROM tbl_request WHERE user_id = $userId AND post_id = $postId");
-        return $row = $query->getRow();
+        $filterData = [
+            'user_id' => $data['user_id'],
+            'post_id' =>  $data['post_id'],
+            'status' => 'Pending'
+        ];
+        return $this->where($filterData)->findAll();
+    }
+
+    public function getMyRequest($userId) {
+        return $this->select('tbl_request.status, tbl_request.user_id, tbl_picture.file_name, tbl_post.pet_name')
+                    ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
+                    ->join('tbl_post', 'tbl_request.post_id = tbl_post.post_id')
+                    ->join('tbl_picture', 'tbl_picture.post_id = tbl_post.post_id')
+                    ->groupBy('tbl_picture.picture_id')
+                    ->where(['tbl_request.user_id' => $userId])->get()->getResult();
     }
 }
