@@ -29,4 +29,11 @@ class RequestModel extends Model
                     ->groupBy('tbl_picture.picture_id')
                     ->where(['tbl_request.user_id' => $userId])->get()->getResult();
     }
+
+    public function requestList($data)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM tbl_request WHERE user_id = $data");
+        return $query->getResult();
+    }
 }

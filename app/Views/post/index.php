@@ -27,7 +27,7 @@
         <div class="col-md-7 col-lg-9">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
-                    <div class="card bg-warning shadow-sm">
+                    <div class="card bg-warning shadow-sm" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                         <a href="#" class="link-dark">
                             <div class="konten">
                                 <img src="/images/add-post.jpg" class="card-img thumb-post" alt="...">
@@ -50,7 +50,7 @@
                 </div>
                 <?php foreach ($post as $data) : ?>
                     <div class="col">
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                             <a href="#" class="link-dark">
                                 <div class="konten">
                                     <img src="/images/post/<?= $data['file_name']; ?>" class="card-img thumb-post" alt="...">

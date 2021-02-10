@@ -47,8 +47,9 @@
                                     <?php endif; ?>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+
                                         <li><a class="dropdown-item" href="/transaction">Transaction <span class="badge bg-warning"><?= count($transactions);?></span></a></li>
-                                        <li><a class="dropdown-item" href="/post/requestList">Request <span class="badge bg-warning"><?= count($postRequest);?></span></a></li>
+                                        <li><a class="dropdown-item" href="/post/requestList">Request <span class="badge bg-warning"><?= count($postRequest);?></span></a></li> 
                                         <li><a href="/user/logout" class="dropdown-item">Logout</a></li>
                                     </ul>
                                 </div>
@@ -107,7 +108,7 @@
                         <div class="ps-2">
                             <span class="main-color font-weight-medium"><strong class="text-orange">Breeding</strong></span>
                             <p class="font-size-14 accent-text-color">
-                                Feature adoption, you can search pet in this site to breed with your pet. Not just only human need love,
+                                Feature breeding, you can search pet in this site to breed with your pet. Not just only human need love,
                                 your pet also need love from another pet.
                             </p>
                         </div>

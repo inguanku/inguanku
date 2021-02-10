@@ -7,6 +7,7 @@
     <title><?= $title; ?></title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 </head>
 
 <body>
@@ -21,11 +22,11 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark fw-bold" href="/post/adopt">Adoption</a>
+                            <li class="nav-item" id="nav-item">
+                                <a id="menuAdopt" class="nav-link text-dark fw-bold" href="/post/adopt">Adoption</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark fw-bold" href="/post/breed">Breeding</a>
+                                <a id="menuBreed" class="nav-link text-dark fw-bold" href="/post/breed">Breeding</a>
                             </li>
                         </ul>
                         <?php if ($user): ?>
@@ -89,6 +90,23 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        var url = window.location.href;
+        url = url.split('/');
+        if(url[4] == 'adopt'){
+            var menu_adopt = document.getElementById("menuAdopt");
+            menu_adopt.classList.add("aktif");
+        }else if(url[4] == 'breed'){
+            var menu_breed = document.getElementById("menuBreed");
+            menu_breed.classList.add("aktif");
+        }else {
+            var nav_item = document.getElementById("nav-item");
+            nav_item.classList.remove("aktif");
+        }
+
+        AOS.init();
+    </script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/feather.min.js"></script>
     <script src="/js/main.js"></script>
