@@ -33,8 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/register', 'User::register');
-$routes->get('/login', 'Auth::login');
-
+$routes->get('/login', 'User::login');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

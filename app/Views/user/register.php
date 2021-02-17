@@ -29,26 +29,37 @@
                 <div class="row justify-content-center d-flex align-items-center clogin">
                     <div class="col-6">
                         <h3 class="mb-4">Get started absolutely free</h3>
-                        <form>
+                        <form action="/user/save" method="post">
+                            <?php if (isset($validation)) : ?>
+                                <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
+                            <?php endif; ?>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="name" autofocus>
+                                <input type="text" class="form-control" id="name" name="name" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" autofocus>
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" autofocus>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="text" maxlength="15" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp" autofocus>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">City</label>
+                                <input type="text" class="form-control" id="city" name="city" aria-describedby="addressHelp" autofocus>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="passwd" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="passwd">
+                                        <input type="password" name="passwd" class="form-control" id="passwd">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label for="passwdConf" class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-control" id="passwdConf">
+                                        <input type="password" name="passConf" class="form-control" id="passConf">
                                     </div>
                                 </div>
                             </div>
