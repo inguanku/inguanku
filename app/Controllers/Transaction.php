@@ -30,12 +30,12 @@ class Transaction extends BaseController
         $this->session = session();
     }
 
-    public function index(){
+    public function index()
+    {
         $userId = $this->session->get('id');
         $name = $this->session->get('name');
 
-        if($userId)
-        {
+        if ($userId) {
             $postRequest = $this->postModel->postRequest($userId);
             $transactions = $this->transactionModel->getTransactions($userId);
             $histories = $this->transactionModel->getTransactionHistory($userId);
@@ -54,9 +54,10 @@ class Transaction extends BaseController
         }
     }
 
-    public function confirm($choice, $requestId){
+    public function confirm($choice, $requestId)
+    {
         $userId = $this->session->get('id');
-        if ($userId){
+        if ($userId) {
             $data = [
                 'request_id' => $requestId,
                 'date' => Time::now()
@@ -67,10 +68,10 @@ class Transaction extends BaseController
             $postId = (int)$dataRequest[0]['post_id'];
 
             $dataRequests = $this->requestModel->where(['post_id' => $postId])->findAll();
-            switch ($choice){
+            switch ($choice) {
                 case 'accept':
                     $this->postModel->update($postId, ['status' => 'Unavailable']);
-                    foreach ($dataRequests as $req){
+                    foreach ($dataRequests as $req) {
                         $this->requestModel->update([$req['request_id']], ['status' => 'Declined']);
                     }
                     $this->requestModel->update($requestId, ['status' => 'Accepted']);
@@ -86,9 +87,17 @@ class Transaction extends BaseController
         }
     }
 
-    public function process($choice, $transactionId){
-       $status = ($choice == 'complete')? 'Success': 'Failed';
-       $this->transactionModel->updateStatus($transactionId, $status);
-       return redirect()->to('/transaction');
+    public function process($choice, $transactionId)
+    {
+        $status = ($choice == 'complete') ? 'Success' : 'Failed';
+        if ($status == 'Failed') {
+            $this->transactionModel->updateStatus($transactionId, $status);
+            $post = $this->transactionModel->join('tbl_request', 'tbl_transaction.request_id = tbl_request.request_id')
+                ->join('tbl_post', 'tbl_request.post_id = tbl_post.post_id')->where(['tbl_transaction.trans_id' => $transactionId])->get()->getResult();
+            $this->postModel->update($post[0]->post_id, ['status' => 'Available']);
+        } else {
+            $this->transactionModel->updateStatus($transactionId, $status);
+        }
+        return redirect()->to('/transaction');
     }
 }

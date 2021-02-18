@@ -21,13 +21,14 @@ class RequestModel extends Model
         return $this->where($filterData)->findAll();
     }
 
-    public function getMyRequest($userId) {
+    public function getMyRequest($userId)
+    {
         return $this->select('tbl_request.status, tbl_request.user_id, tbl_picture.file_name, tbl_post.pet_name')
-                    ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
-                    ->join('tbl_post', 'tbl_request.post_id = tbl_post.post_id')
-                    ->join('tbl_picture', 'tbl_picture.post_id = tbl_post.post_id')
-                    ->groupBy('tbl_picture.picture_id')
-                    ->where(['tbl_request.user_id' => $userId])->get()->getResult();
+            ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
+            ->join('tbl_post', 'tbl_request.post_id = tbl_post.post_id')
+            ->join('tbl_picture', 'tbl_picture.post_id = tbl_post.post_id')
+            ->groupBy('tbl_request.request_id')
+            ->where(['tbl_request.user_id' => $userId])->get()->getResult();
     }
 
     public function requestList($data)
