@@ -26,7 +26,7 @@ class PostModel extends Model
 
     public function getPostData($category, $city)
     {
-        if ($city){
+        if ($city) {
             return $this->db->table('tbl_post')
                 ->join('tbl_user', 'tbl_user.user_id=tbl_post.user_id')
                 ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
@@ -55,20 +55,21 @@ class PostModel extends Model
     public function getRecent()
     {
         return $this->db
-                    ->table('tbl_post')
-                    ->LIMIT(4)
-                    ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
-                    ->groupBy('tbl_post.post_id')->orderBy('tbl_post.post_id','DESC')
-                    ->get()->getResult();
+            ->table('tbl_post')
+            ->LIMIT(4)
+            ->join('tbl_picture', 'tbl_picture.post_id=tbl_post.post_id')
+            ->groupBy('tbl_post.post_id')->orderBy('tbl_post.post_id', 'DESC')
+            ->get()->getResult();
     }
 
     public function postRequest($userId)
     {
         return $this->db->table('tbl_post')
-                        ->join('tbl_request', 'tbl_request.post_id = tbl_post.post_id')
-                        ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
-                        ->join('tbl_picture', 'tbl_post.post_id = tbl_picture.post_id')
-                        ->where(['tbl_post.user_id'=> $userId, 'tbl_post.status' => 'Available', 'tbl_request.status' => 'Pending'])
-                        ->get()->getResult();
+            ->join('tbl_request', 'tbl_request.post_id = tbl_post.post_id')
+            ->join('tbl_user', 'tbl_request.user_id = tbl_user.user_id')
+            ->join('tbl_picture', 'tbl_post.post_id = tbl_picture.post_id')
+            ->where(['tbl_post.user_id' => $userId, 'tbl_post.status' => 'Available', 'tbl_request.status' => 'Pending'])
+            ->groupBy('tbl_request.request_id')
+            ->get()->getResult();
     }
 }

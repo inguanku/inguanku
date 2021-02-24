@@ -25,7 +25,6 @@ class Post extends BaseController
         $this->requestModel = new RequestModel;
         $this->transactionModel = new TransactionModel();
         $this->session = session();
-        
     }
 
     public function adopt()
@@ -83,8 +82,7 @@ class Post extends BaseController
         $transactions = $this->transactionModel->getTransactions($userId);
 
         $userId = $this->session->get('id');
-        if(($userId))
-        {
+        if (($userId)) {
             $userId = $this->session->get('id');
             $dataRequest = [
                 'user_id' => $this->session->get('id'),
@@ -105,7 +103,7 @@ class Post extends BaseController
             ];
             return view('post/detail', $data);
         }
-        
+
 
         $data = [
             'title' => 'Detail | Inguanku',
@@ -141,7 +139,8 @@ class Post extends BaseController
         return redirect()->to('./');
     }
 
-    public function request($id){
+    public function request($id)
+    {
         $data = [
             'user_id' => $this->session->get('id'),
             'post_id' => (int)$this->request->uri->getSegment(3),
@@ -149,14 +148,13 @@ class Post extends BaseController
         ];
 
         $this->requestModel->insert($data);
-        return redirect()->to('./post/detail/'.$id);
+        return redirect()->to('./post/detail/' . $id);
     }
 
     public function requestList()
     {
         $userId = $this->session->get('id');
-        if($userId)
-        {
+        if ($userId) {
             $postRequest = $this->postModel->postRequest($userId);
             $transactions = $this->transactionModel->getTransactions($userId);
             $myRequests = $this->requestModel->getMyRequest($userId);
